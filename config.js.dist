@@ -1,0 +1,27 @@
+import rokkaHelper from './src/rokkaHelper'
+
+export default {
+  rokkaOrg: 'playground',
+  rokkaKey: '', //default key, only set, if you want people to be able to use the site without a key (or add a read only key)
+  // you can change the downloads button to for example load from the "source stack". You can also add other buttons here
+  /*orgOptions: {
+    yourOrgName: {
+      deleteEnabled: true, // if you want to enable the delete button
+      downloads: {
+        original: {
+          title: 'Open original', // can also be a function
+          url: function (icon, rokkaOrg) {
+            return rokkaHelper.renderUrl(
+              icon,
+              rokkaOrg,
+              null,
+              null,
+              null,
+              'source'
+            )
+          }
+        }
+      }
+    }
+  }*/
+}

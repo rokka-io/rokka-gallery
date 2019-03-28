@@ -1,0 +1,4 @@
+[submodule "vue-rokka-image"]
+	path = vue-rokka-image
+	url = git@github.com:rokka-io/vue-rokka-image.git
+	branch = alpha-additions

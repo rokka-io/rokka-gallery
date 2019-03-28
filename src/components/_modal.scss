@@ -1,0 +1,103 @@
+
+@import "variables";
+
+#modal {
+  height: 100%;
+  width: 100%;
+
+
+  #main {
+    display: grid;
+    grid-template-columns:  minmax(200px, auto) minmax(170px, 450px);
+    position: relative;
+    grid-gap: 5px;
+    height: calc(100% - #{$modal-header-height} );
+    width: 100%;
+    padding: 10px 20px;
+
+  }
+  .footer {
+    text-align: center;
+    width: 100%;
+    height: $modal-footer-height;
+    padding-top: 15px;
+    white-space: nowrap;
+  }
+  /deep/ .field-label {
+    display: inline;
+  }
+
+  .left-content {
+    width: 100%;
+    height: calc(100% - #{$modal-footer-height});
+    overflow: auto;
+  }
+
+  .left {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .data {
+    overflow: hidden;
+  }
+  .data-content {
+    overflow: auto;
+
+    height: calc(100% - #{$modal-footer-height});
+  }
+
+  img {
+    max-width: 95%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+  }
+
+  /deep/ .button {
+    position: relative;
+    background-color: $green-700; //rgba(255, 255, 255, 0.15);
+    color: white;
+    font-weight: 500;
+    padding: $spacing-unit-tiny $spacing-unit-small;
+    border: 1px  $green-700 solid;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  /deep/ .button.cancel {
+    background-color: white; //rgba(255, 255, 255, 0.15);
+    color: black;
+    border: 1px  $green-700 solid;
+  }
+  /deep/ .button.warning {
+    background-color: darkred ;
+    border: 1px darkred solid;
+
+  }
+
+  /deep/ .button.prewarning {
+    background-color: white; //rgba(255, 255, 255, 0.15);
+    color: black;
+    border: 1px lightcoral solid;
+  }
+  /deep/ .vue-tags-input {
+    max-width: none !important;
+
+    .ti-selected-item {
+      background-color: $green-700 !important;
+      color: white;
+    }
+    .ti-autocomplete {
+      overflow: auto;
+      max-height: calc(100vh - 80px);
+    }
+    .ti-tag {
+      background-color: $green-700;
+    }
+    .ti-deletion-mark {
+      background-color: darkred;
+    }
+  }
+}
