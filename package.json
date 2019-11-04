@@ -13,7 +13,7 @@
     "@johmun/vue-tags-input": "^2.1.0",
     "@liip/styleguide": "^3.3.1",
     "dayjs": "^1.8.16",
-    "rokka": "^2.0.0",
+    "rokka": "^2.0.1",
     "vue": "^2.6.6",
     "vue-clipboard2": "^0.3.1",
     "vue-gallery": "^2.0.1",
