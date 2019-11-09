@@ -1,7 +1,7 @@
 <template>
   <rokka-img-lazy
     :key="image.short_hash"
-    :org="image.organization"
+    :organization="image.organization"
     :hash="image.short_hash"
     :filename="image.name"
     :stack="stack"
