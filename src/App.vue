@@ -45,8 +45,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
-
+import { map, forEach, debounce } from 'lodash-es';
 import Header from './components/Header';
 import Nav from './components/nav/Nav';
 import { EventBus } from './eventBus';
@@ -87,7 +86,7 @@ export default {
       return 'created desc';
     },
     allAlbums() {
-      return _.map(this.categories, a => {
+      return map(this.categories, a => {
         return { text: a.name };
       });
     },
@@ -118,7 +117,7 @@ export default {
 
   created() {
     this.checkLogin();
-    this.debouncedUpdate = _.debounce(this.updateTags, 10000);
+    this.debouncedUpdate = debounce(this.updateTags, 10000);
 
     EventBus.$on('image-updated', hash => {
       // eslint-disable-next-line
@@ -238,7 +237,7 @@ export default {
         .then(response => {
           this.imagesCount = response.body.total;
           if (response.body['facets']['user:array:albums']) {
-            const categories = _.map(
+            const categories = map(
               response.body['facets']['user:array:albums'],
               a => {
                 return { slug: a.value, name: a.value };
@@ -285,14 +284,14 @@ export default {
         })
         .then(response => {
           let tags = {};
-          _.forEach(facets, facet => {
+          forEach(facets, facet => {
             if (response.body['facets'][facet]) {
-              _.forEach(response.body['facets'][facet], a => {
+              forEach(response.body['facets'][facet], a => {
                 tags[a.value] = true;
               });
             }
           });
-          const allTags = _.map(tags, (a, key) => {
+          const allTags = map(tags, (a, key) => {
             return { text: key };
           });
           allTags.sort((a, b) => {

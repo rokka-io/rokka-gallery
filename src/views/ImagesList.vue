@@ -29,7 +29,7 @@
 <script>
 import ImagesList from '@/components/ImagesList';
 import Loader from '@/components/common/Loader';
-import _ from 'lodash';
+import { forEach } from 'lodash-es';
 
 export default {
   components: {
@@ -125,10 +125,10 @@ export default {
             operator: 'or',
             limit: 500,
           };
-          _.forEach(searchFields, key => {
+          forEach(searchFields, key => {
             search[key] = this.query;
           });
-          _.forEach(searchFieldsLowerCased, key => {
+          forEach(searchFieldsLowerCased, key => {
             search[key] = this.query.toLowerCase();
           });
         }

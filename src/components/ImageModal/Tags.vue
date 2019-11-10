@@ -17,7 +17,7 @@
 
 <script>
 import VueTagsInput from '@johmun/vue-tags-input';
-import _ from 'lodash';
+import { map } from 'lodash-es';
 import { EventBus } from '../../eventBus';
 
 export default {
@@ -79,7 +79,7 @@ export default {
     metdataUpdate(newTags) {
       const metadataName = this.metadataName;
 
-      const tags = _.map(newTags, a => {
+      const tags = map(newTags, a => {
         return a.text;
       });
       const user_metadata = {};

@@ -49,7 +49,7 @@ import ImageModal from './ImageModal';
 
 import ImageBlock from './ImageBlock';
 import { EventBus } from '../eventBus';
-import _ from 'lodash';
+import { map, forEach } from 'lodash-es';
 
 export default {
   components: {
@@ -92,7 +92,7 @@ export default {
   },
   computed: {
     galleryImages() {
-      return _.map(this.images, image => {
+      return map(this.images, image => {
         let format = null;
         if (image['mimetype'] === 'video/mp4') {
           format = 'mp4';
@@ -130,7 +130,7 @@ export default {
     EventBus.$on('image-added', (hash, image) => {
       let imageInList = false;
 
-      _.forEach(this.images, function(value) {
+      forEach(this.images, function(value) {
         if (value.hash === hash) {
           imageInList = true;
         }

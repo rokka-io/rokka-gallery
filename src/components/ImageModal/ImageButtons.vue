@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import { pickBy } from 'lodash-es';
 export default {
   name: 'ImageButtons',
   props: {
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     globalDownloadOptions() {
-      return _.pickBy(this.globalOptions.downloads, el => {
+      return pickBy(this.globalOptions.downloads, el => {
         return this.resolveButtonTitle(el.title) !== null;
       });
     },

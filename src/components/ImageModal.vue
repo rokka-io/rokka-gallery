@@ -132,7 +132,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import { map, forEach } from 'lodash-es';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import rokkaHelper from '../rokkaHelper';
@@ -227,7 +227,7 @@ export default {
         this.localImage.static_metadata['autolabels'] &&
         this.localImage.static_metadata['autolabels']['labels']
       ) {
-        return _.map(
+        return map(
           this.localImage.static_metadata['autolabels']['labels'],
           (a, b) => {
             return b;
@@ -240,7 +240,7 @@ export default {
       const metadata = [];
 
       if (this.localImage.user_metadata) {
-        _.forEach(this.localImage.user_metadata, (a, b) => {
+        forEach(this.localImage.user_metadata, (a, b) => {
           if (b !== 'array:labels' && b !== 'array:albums') {
             if (b === 'unsplash_artist_id') {
               b = 'Unsplash Artist';
@@ -269,7 +269,7 @@ export default {
       const metadata = [];
 
       if (this.localImage.static_metadata) {
-        _.forEach(this.localImage.static_metadata, (a, b) => {
+        forEach(this.localImage.static_metadata, (a, b) => {
           if (
             b !== 'exif' &&
             b !== 'location' &&
@@ -292,7 +292,7 @@ export default {
       const metadata = [];
 
       if (this.localImage.dynamic_metadata) {
-        _.forEach(this.localImage.dynamic_metadata, (a, b) => {
+        forEach(this.localImage.dynamic_metadata, (a, b) => {
           metadata.push({ key: b, value: a });
         });
         metadata.sort((a, b) => {
@@ -310,7 +310,7 @@ export default {
         this.localImage.static_metadata &&
         this.localImage.static_metadata.exif
       ) {
-        _.forEach(this.localImage.static_metadata.exif, (a, b) => {
+        forEach(this.localImage.static_metadata.exif, (a, b) => {
           if (a instanceof Array) {
             a = a.join(', ');
           }
@@ -341,7 +341,7 @@ export default {
         this.localImage.static_metadata &&
         this.localImage.static_metadata.location
       ) {
-        _.forEach(this.localImage.static_metadata.location, (a, b) => {
+        forEach(this.localImage.static_metadata.location, (a, b) => {
           if (b === 'coordinates') {
             a = `<a target="_blank" href="https://www.google.com/maps/place/${a}">${a}</a>`;
           } else {
@@ -362,7 +362,7 @@ export default {
         this.localImage.static_metadata.video.data
       ) {
         const data = this.localImage.static_metadata.video.data;
-        _.forEach(data, (a, b) => {
+        forEach(data, (a, b) => {
           switch (b) {
             case 'ms':
             case 'hours':
@@ -451,7 +451,7 @@ export default {
       this.$emit('modal-image-clicked', this.index);
     },
     beforeLabelsUpdate(newTags) {
-      newTags = _.map(newTags, tag => {
+      newTags = map(newTags, tag => {
         tag.text = tag.text.toLowerCase();
         return tag;
       });
@@ -462,7 +462,7 @@ export default {
         this.localImage.user_metadata &&
         this.localImage.user_metadata[metadata]
       ) {
-        return _.map(this.localImage.user_metadata[metadata], a => {
+        return map(this.localImage.user_metadata[metadata], a => {
           return { text: a };
         }).sort();
       }

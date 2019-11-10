@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import { map } from 'lodash-es';
 import VueTagsInput from '@johmun/vue-tags-input';
 import { EventBus } from '../eventBus';
 import TitleLine from './Modal/TitleLine';
@@ -146,12 +146,12 @@ export default {
       });
     },
     albumsText() {
-      return _.map(this.albums, album => {
+      return map(this.albums, album => {
         return album.text;
       });
     },
     tagsText() {
-      return _.map(this.tags, tag => {
+      return map(this.tags, tag => {
         return tag.text;
       });
     },
