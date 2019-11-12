@@ -1,8 +1,8 @@
 <template>
   <modal
     name="modal-image"
-    height="90%"
-    width="90%"
+    height="48%"
+    width="80%"
     :max-width="1500"
     :max-height="1000"
     :adaptive="true"
@@ -25,8 +25,8 @@
             />
           </div>
 
+          <ImageButtons :global-options="globalOptions" :image="localImage" />
           <div class="footer">
-            <ImageButtons :global-options="globalOptions" :image="localImage" />
           </div>
         </div>
 
@@ -124,12 +124,6 @@
                 />
               </div>
             </CollapsibleSection>
-          </div>
-
-          <div class="footer">
-            <button class="button" @click="$modal.hide('modal-image')">
-              {{ closeMessage }}
-            </button>
           </div>
         </div>
       </div>

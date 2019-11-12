@@ -3,47 +3,45 @@
     <form @submit="save">
       <TitleLine title="Settings / Credentials" modal-name="modal-settings" />
 
-      <div id="main">
-        <div class="left">
-          <div class="left-content">
-            <div v-if="title">
-              <b>{{ title }}</b>
-            </div>
+      <div>
+        <div class="settings-form-container">
+          <div v-if="title">
+            <b>{{ title }}</b>
+          </div>
 
-            <div v-if="!rokkaKey">
-              Please provide your rokka api key and organization:
-            </div>
-            <div>
-              <label class="field-label" for="rokkaOrg"
-                >rokka Organization:</label
-              >
-              <input
-                id="rokkaOrg"
-                v-model.trim="rokkaOrgField"
-                class="field"
-                size="64"
-              />
-            </div>
-            <div>
-              <label class="field-label" for="rokkaApi">rokka Api-Key: </label>
-              <input
-                id="rokkaApi"
-                v-model.trim="rokkaKeyField"
-                class="field"
-                type="password"
-                size="64"
-              />
-            </div>
+          <div v-if="!rokkaKey">
+            Please provide your rokka api key and organization:
           </div>
-          <div class="footer">
-            <button
-              class="button cancel"
-              @click="$modal.hide('modal-settings')"
+          <div>
+            <label class="field-label" for="rokkaOrg"
+              >rokka Organization:</label
             >
-              Cancel
-            </button>
-            <input type="submit" class="button" value="Save" />
+            <input
+              id="rokkaOrg"
+              v-model.trim="rokkaOrgField"
+              class="field"
+              size="64"
+            />
           </div>
+          <div>
+            <label class="field-label" for="rokkaApi">rokka Api-Key: </label>
+            <input
+              id="rokkaApi"
+              v-model.trim="rokkaKeyField"
+              class="field"
+              type="password"
+              size="64"
+            />
+          </div>
+        </div>
+        <div class="settings-form-actions">
+          <input type="submit" class="button" value="Save" />
+          <button
+            class="button cancel"
+            @click="$modal.hide('modal-settings')"
+          >
+            Cancel
+          </button>
         </div>
         <div class="data"></div>
       </div>

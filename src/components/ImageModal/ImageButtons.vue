@@ -5,7 +5,7 @@
       class="button"
       @click="openImage(null)"
     >
-      Open in original size
+      Open original
     </button>
     <button
       v-for="(button, i) in globalDownloadOptions"
@@ -17,8 +17,8 @@
     </button>
   </span>
   <span v-else>
-    <button class="button" @click="openImage(null)">
-      Open in original size
+    <button class="button button-openimg" @click="openImage(null)">
+      Open original
     </button>
   </span>
 </template>

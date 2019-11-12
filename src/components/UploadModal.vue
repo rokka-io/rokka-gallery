@@ -2,71 +2,45 @@
   <div id="modal">
     <TitleLine title="Upload Images" modal-name="modal-upload" />
 
-    <div id="main">
-      <div class="left">
-        <div class="left-content">
-          <vue-rokka-uploader
-            ref="upload"
-            :rokka-key="globalOptions.rokkaKey"
-            :rokka-org="globalOptions.rokkaOrg"
-            :append-promise="appendPromise"
-            :image-metadata="imageMetadata"
-            @uploading="uploadingEvent"
-            @uploaded="uploadedEvent"
-          >
-            <template v-slot:buttons>
-              <span />
-            </template>
-            <span></span>
-          </vue-rokka-uploader>
-        </div>
-        <div class="footer">
-          <button
-            class="button file-uploads file-uploads-html5 file-uploads-drop"
-          >
-            Select Files
-            <label for="file"></label>
-            <input id="file" type="file" name="file" multiple="multiple" />
-          </button>
-
-          <button
-            type="button"
-            class="button cancel"
-            @click.prevent="$refs.upload.$refs.upload.clear()"
-          >
-            Clear list
-          </button>
-          <button
-            v-if="uploaded"
-            type="button"
-            class="button"
-            @click.prevent="$refs.upload.$refs.upload.active = false"
-          >
-            Uploaded
-          </button>
-          <button
-            v-else-if="!uploading"
-            type="button"
-            class="button"
-            @click.prevent="$refs.upload.$refs.upload.active = true"
-          >
-            Start Upload
-          </button>
-
-          <button
-            v-else
-            type="button"
-            class="button warning"
-            @click.prevent="$refs.upload.$refs.upload.active = false"
-          >
-            Stop Upload
-          </button>
-        </div>
+    <div class="upload-container">
+      <div class="upload-files">
+        <vue-rokka-uploader
+          ref="upload"
+          :rokka-key="globalOptions.rokkaKey"
+          :rokka-org="globalOptions.rokkaOrg"
+          :append-promise="appendPromise"
+          :image-metadata="imageMetadata"
+          @uploading="uploadingEvent"
+          @uploaded="uploadedEvent"
+        >
+          <template v-slot:buttons>
+            <span />
+          </template>
+          <span></span>
+        </vue-rokka-uploader>
       </div>
-      <div class="data">
-        Drag images into the gray area on the left or click on it.
+      <div class="upload-actions">
+        <div class="upload-helptext">
+          Drag images into the gray area above or browse for adding images.
+        </div>
+        <button
+          class="button file-uploads file-uploads-html5 file-uploads-drop"
+        >
+          Browse...
+          <label for="file"></label>
+          <input id="file" type="file" name="file" multiple="multiple" />
+        </button>
 
-        <div>
+        <button
+          type="button"
+          class="button cancel"
+          @click.prevent="$refs.upload.$refs.upload.clear()"
+        >
+          Clear files
+        </button>
+      </div>
+      <div class="upload-form-container">
+        <div class="upload-form">
           <div class="field-label">
             Labels:
           </div>
@@ -78,8 +52,6 @@
             :autocomplete-items="filteredTags"
             @tags-changed="tagsUpdate"
           />
-        </div>
-        <div>
           <div class="field-label">
             Albums:
           </div>
@@ -94,6 +66,31 @@
             @tags-changed="albumsUpdate"
           />
         </div>
+        <button
+          v-if="uploaded"
+          type="button"
+          class="button"
+          @click.prevent="$refs.upload.$refs.upload.active = false"
+        >
+          Uploaded
+        </button>
+        <button
+          v-else-if="!uploading"
+          type="button"
+          class="button"
+          @click.prevent="$refs.upload.$refs.upload.active = true"
+        >
+          Upload
+        </button>
+
+        <button
+          v-else
+          type="button"
+          class="button warning"
+          @click.prevent="$refs.upload.$refs.upload.active = false"
+        >
+          Stop Upload
+        </button>
       </div>
     </div>
   </div>

@@ -1,59 +1,126 @@
 
 @import "variables";
 
+* {
+  box-sizing: border-box;
+}
+
 #modal {
   height: 100%;
   width: 100%;
-
-
+  
   #main {
     display: grid;
-    grid-template-columns:  minmax(200px, auto) minmax(170px, 450px);
+    grid-template-columns: 60% 40%;
     position: relative;
     grid-gap: 5px;
     height: calc(100% - #{$modal-header-height} );
     width: 100%;
-    padding: 10px 20px;
-
   }
+
+  .upload-container {
+    display: grid;
+    grid-template-rows: 50% 8% auto;
+    height: 100%;
+  }
+
+  .upload-files {
+    position: relative;
+    background: #F7F7F5;
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .upload-helptext {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .upload-actions {
+    margin: 16px;
+  }
+  
+  .upload-form-container {
+    padding: 32px 16px;
+  }
+
+  .upload-form {
+    margin-bottom: 16px;
+  }
+
   .footer {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
     text-align: center;
-    width: 100%;
     height: $modal-footer-height;
     padding-top: 15px;
     white-space: nowrap;
   }
+
+  .settings-form-container {
+    width: 100%;
+    padding: 16px;
+  }
+ 
+  .settings-form-actions {
+    padding: 0 16px;
+  }
+
   /deep/ .field-label {
     display: inline;
   }
-
+  
   .left-content {
     width: 100%;
-    height: calc(100% - #{$modal-footer-height});
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGklEQVQYlWN48ODBf3TMgA0MBYWDzDkUKQQA/Su1D0qvFnQAAAAASUVORK5CYII=") repeat;
+    height: 100%;
     overflow: auto;
   }
 
   .left {
     overflow: hidden;
-    height: 100%;
+    // height: 100%;
   }
 
   .data {
     overflow: hidden;
+    margin-left: -5px;
+    margin-right: 6px;
   }
-  .data-content {
-    overflow: auto;
 
-    height: calc(100% - #{$modal-footer-height});
+  .data-content {
+    overflow-y: auto;
+    height: 100%;
   }
 
   img {
-    max-width: 95%;
+    height: auto;
+    width: auto;
+    max-width: 100%;
     max-height: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding: 16px;
+  }
 
+  /deep/ .title {
+    font-size: 18px;
+    padding: 4px 8px;
 
+    &:hover {
+      color: #6EA644;
+      background-color: white;
+    }
+
+    &.open {
+      color: #6EA644;
+      background-color: white;
+  
+      + div {
+        padding: 8px 32px;
+      }
+    }
   }
 
   /deep/ .button {
@@ -65,12 +132,20 @@
     border: 1px  $green-700 solid;
     cursor: pointer;
     margin-right: 10px;
+    
+    &.button-openimg {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
   }
+
   /deep/ .button.cancel {
     background-color: white; //rgba(255, 255, 255, 0.15);
     color: black;
     border: 1px  $green-700 solid;
   }
+
   /deep/ .button.warning {
     background-color: darkred ;
     border: 1px darkred solid;
@@ -82,6 +157,7 @@
     color: black;
     border: 1px lightcoral solid;
   }
+
   /deep/ .vue-tags-input {
     max-width: none !important;
 
@@ -100,4 +176,5 @@
       background-color: darkred;
     }
   }
+  
 }

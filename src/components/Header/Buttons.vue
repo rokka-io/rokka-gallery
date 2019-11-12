@@ -112,8 +112,8 @@ export default {
           globalOptions: this.globalOptions,
         },
         {
-          height: '90%',
-          width: '90%',
+          height: '700px',
+          width: '600px',
           maxWidth: 1000,
           maxHeight: 1000,
           name: 'modal-upload',

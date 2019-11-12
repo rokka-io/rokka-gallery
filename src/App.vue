@@ -193,8 +193,8 @@ export default {
           rokkaOrg: this.rokkaOrg,
         },
         {
-          height: '400px',
-          width: '90%',
+          height: '270px',
+          width: '600px',
           maxWidth: 1000,
           maxHeight: 400,
           name: 'modal-settings',
