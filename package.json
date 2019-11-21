@@ -19,8 +19,8 @@
     "vue-clipboard2": "^0.3.1",
     "vue-gallery": "^2.0.1",
     "vue-js-modal": "^1.3.31",
-    "vue-rokka-image-lazy": "^0.4.1",
-    "vue-rokka-uploader": "^0.3.0",
+    "vue-rokka-image-lazy": "^0.4.2",
+    "vue-rokka-uploader": "^0.3.1",
     "vue-router": "^3.1.3",
     "vue-toastification": "^0.1.7"
   },
