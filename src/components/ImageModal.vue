@@ -24,8 +24,7 @@
           </div>
 
           <ImageButtons :global-options="globalOptions" :image="localImage" />
-          <div class="footer">
-          </div>
+          <div class="footer"></div>
         </div>
 
         <div class="data">

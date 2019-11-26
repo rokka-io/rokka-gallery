@@ -1,5 +1,5 @@
 <template>
-  <div class="imgbuttons-container" v-if="globalOptions.downloads">
+  <div v-if="globalOptions.downloads" class="imgbuttons-container">
     <button
       v-if="!(globalOptions.downloads && globalOptions.downloads.original)"
       class="button button-spaced"
@@ -16,7 +16,7 @@
       {{ resolveButtonTitle(button.title) }}
     </button>
   </div>
-  <div class="imgbuttons-container" v-else>
+  <div v-else class="imgbuttons-container">
     <button class="button button-spaced" @click="openImage(null)">
       Open original
     </button>

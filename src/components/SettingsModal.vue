@@ -36,10 +36,7 @@
         </div>
         <div class="settings-form-actions">
           <input type="submit" class="button" value="Save" />
-          <button
-            class="button cancel"
-            @click="$modal.hide('modal-settings')"
-          >
+          <button class="button cancel" @click="$modal.hide('modal-settings')">
             Cancel
           </button>
         </div>
