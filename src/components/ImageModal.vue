@@ -1,10 +1,8 @@
 <template>
   <modal
     name="modal-image"
-    height="48%"
-    width="80%"
-    :max-width="1500"
-    :max-height="1000"
+    height="90%"
+    width="95%"
     :adaptive="true"
     @before-open="beforeOpen"
     @before-close="beforeClose"

@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+.v--modal-overlay {
+  background: rgba(0, 0, 0, .6);
+}
+
 #modal {
   height: 100%;
   width: 100%;
@@ -17,7 +21,7 @@
     height: calc(100% - #{$modal-header-height} );
     width: 100%;
   }
-
+  
   .upload-container {
     display: grid;
     grid-template-rows: 50% 8% auto;
@@ -76,6 +80,9 @@
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGklEQVQYlWN48ODBf3TMgA0MBYWDzDkUKQQA/Su1D0qvFnQAAAAASUVORK5CYII=") repeat;
     height: 100%;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .left {
