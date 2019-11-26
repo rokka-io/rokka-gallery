@@ -207,7 +207,7 @@ export default {
       return rokkaHelper.imageTitle(this.image);
     },
     stack() {
-      return rokkaHelper.getStackByDimensions(1000, 800);
+      return rokkaHelper.getStackByDimensions(1500, 1300);
     },
     format() {
       return rokkaHelper.getOriginalCompatibleFormat(this.image);
