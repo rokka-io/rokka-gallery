@@ -130,6 +130,13 @@
     }
   }
 
+  .imgbuttons-container {
+    width: 55%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
   /deep/ .button {
     position: relative;
     background-color: $green-700; //rgba(255, 255, 255, 0.15);
@@ -139,11 +146,9 @@
     border: 1px  $green-700 solid;
     cursor: pointer;
     margin-right: 10px;
-    
-    &.button-openimg {
-      position: absolute;
-      top: 20px;
-      left: 20px;
+
+    &.button-spaced {
+      margin-bottom: 10px;
     }
   }
 

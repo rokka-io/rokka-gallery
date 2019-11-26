@@ -1,8 +1,8 @@
 <template>
-  <span v-if="globalOptions.downloads">
+  <div class="imgbuttons-container" v-if="globalOptions.downloads">
     <button
       v-if="!(globalOptions.downloads && globalOptions.downloads.original)"
-      class="button"
+      class="button button-spaced"
       @click="openImage(null)"
     >
       Open original
@@ -10,17 +10,17 @@
     <button
       v-for="(button, i) in globalDownloadOptions"
       :key="i"
-      class="button"
+      class="button button-spaced"
       @click="openImage(button.url)"
     >
       {{ resolveButtonTitle(button.title) }}
     </button>
-  </span>
-  <span v-else>
-    <button class="button button-openimg" @click="openImage(null)">
+  </div>
+  <div class="imgbuttons-container" v-else>
+    <button class="button button-spaced" @click="openImage(null)">
       Open original
     </button>
-  </span>
+  </div>
 </template>
 
 <script>
