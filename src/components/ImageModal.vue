@@ -14,11 +14,21 @@
       />
       <div id="main">
         <div class="left">
-          <div class="left-content" @click="imgClicked">
+          <div class="left-content">
+            <cropper
+              classname="cropper"
+              :src="imageRenderUrl"
+              :canvas="false"
+              :stencil-props="{
+                handlersClassnames: {
+                  default: 'handler2', // doesn't work, don't know why yet...
+                },
+              }"
+            ></cropper>
             <rokka-image-lazy
               :loading="`${baseUrl}assets/loader.svg`"
-              :image="image"
               :stack="stack"
+              :image="image"
               :format="format"
             />
           </div>
@@ -140,6 +150,7 @@ import ImageButtons from './ImageModal/ImageButtons';
 import DeleteButton from './ImageModal/DeleteButton';
 import MainData from './ImageModal/MainData';
 import rokkaImageLazy from './RokkaImageLazy';
+import { Cropper } from 'vue-advanced-cropper';
 
 dayjs.extend(LocalizedFormat);
 
@@ -163,6 +174,7 @@ export default {
     TitleLine,
     CollapsibleSection,
     rokkaImageLazy,
+    Cropper,
   },
   props: {
     allAlbums: {
@@ -193,6 +205,8 @@ export default {
 
   data() {
     return {
+      img:
+        'https://playground.rokka.io/dynamic/resize-width-1500-height-1300-upscale-false/o-af-1/6f4632/doit_einzelaktion-aktion_it.jpg',
       localImage: {
         static_metadata: {},
       },
@@ -210,6 +224,17 @@ export default {
     },
     format() {
       return rokkaHelper.getOriginalCompatibleFormat(this.image);
+    },
+
+    imageRenderUrl() {
+      return rokkaHelper.renderUrl(
+        this.image,
+        this.image.organization,
+        1500,
+        1300,
+        this.format,
+        this.stack + '/o-af-1'
+      );
     },
 
     labels() {
@@ -469,6 +494,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'modal';
+.handler2,
+.vue-square-handler {
+  width: 20px;
+  height: 5px;
+}
+
+.line {
+  border-style: dashed;
+  border-color: red;
+}
 </style>
