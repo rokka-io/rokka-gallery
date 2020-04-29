@@ -8,7 +8,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: `
+        prependData: `
           @import "~@liip/styleguide/assets/scss/settings/settings";
           @import "~@liip/styleguide/assets/scss/settings/kanbasu";
           @import '~kanbasu/src/scss/tools/functions';
