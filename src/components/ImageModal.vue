@@ -396,6 +396,9 @@ export default {
   watch: {
     index() {
       this.localImage = this.image;
+      if (this.localImage) {
+        window.location.hash = this.localImage.short_hash;
+      }
       this.loadImageDataFromRokka();
     },
   },

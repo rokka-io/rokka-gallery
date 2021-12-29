@@ -140,9 +140,11 @@ export default {
       // eslint-disable-next-line
       console.log(`Credentials got updated`);
       this.rokkaOrg = org;
-      this.rokkaKey = key;
+      if (key) {
+        localStorage.setItem('rokkaKey', key);
+        this.rokkaKey = key;
+      }
       localStorage.setItem('rokkaOrg', org);
-      localStorage.setItem('rokkaKey', key);
       this.setCanWrite(null);
       this.setCanUpload(null);
       this.updateTags();
@@ -151,6 +153,7 @@ export default {
         .push({
           path: this.$route.path || '/',
           query,
+          hash: window.location.hash,
         })
         .catch(() => {
           this.reload = new Date();

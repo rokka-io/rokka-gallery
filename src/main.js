@@ -42,7 +42,7 @@ Vue.use({
       width,
       height = null,
       format = null,
-      stack = 'dynamic/resize-width-${width}-height-${height}-upscale-false'
+      stack = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true'
     ) => {
       return rokkaHelper.renderUrl(
         image,

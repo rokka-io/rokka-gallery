@@ -83,8 +83,17 @@ export default {
       default: null,
     },
   },
-
   data() {
+    if (window.location.hash) {
+      window.setTimeout(() => {
+        const hash = window.location.hash.substring(1);
+        const i = this.images.findIndex(image => image.short_hash === hash);
+        if (i >= 0) {
+          this.showModalImage(i);
+        }
+      }, 10);
+    }
+
     return {
       galleryIndex: null,
       modalIndex: null,
@@ -120,6 +129,11 @@ export default {
       });
     },
   },
+  watch: {
+    images() {
+      console.log('foo');
+    },
+  },
   created() {
     //those events are a little bit ugly...
     EventBus.$on('show-gallery', () => {
@@ -149,6 +163,7 @@ export default {
         showIndex = this.images.length - 1;
       }
       this.modalIndex = showIndex;
+
       this.$modal.show('modal-image');
     },
 
