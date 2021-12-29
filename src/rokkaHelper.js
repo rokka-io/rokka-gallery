@@ -1,5 +1,5 @@
 const getStackByDimensions = (
-  template = 'dynamic/resize-width-${width}-height-${height}-upscale-false',
+  template = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true',
   width = null,
   height = null
 ) => {
@@ -33,7 +33,7 @@ export default {
     width,
     height = null,
     format = null,
-    stack = 'dynamic/resize-width-${width}-height-${height}-upscale-false'
+    stack = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true'
   ) => {
     stack = getStackByDimensions(stack, width, height);
     format = getOriginalCompatibleFormat(image, format);
@@ -49,7 +49,7 @@ export default {
   getStackByDimensions: (
     width = null,
     height = null,
-    template = 'dynamic/resize-width-${width}-height-${height}-upscale-false'
+    template = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true'
   ) => {
     return getStackByDimensions(template, width, height);
   },
