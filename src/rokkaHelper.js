@@ -40,7 +40,7 @@ export default {
     if (image && image.short_hash) {
       return `https://${rokkaOrg}.rokka.io/${stack}/${
         image.short_hash
-      }/${image.name.replace(/\.[^/.]+$/, '').replace(/[.?]/g, '_')}.${format}`;
+      }/${image.name.replace(/\.[^/.]+$/, '').replace(/[.?]/g, '_')}_v5781632.${format}`;
     }
 
     return '';
