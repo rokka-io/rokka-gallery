@@ -1,23 +1,17 @@
 <template>
   <div>
-    <div
-      style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-    >
-      <div class="field-label">
-        Hash:
-      </div>
+    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+      <div class="field-label">Hash:</div>
       <button v-clipboard:copy="image.hash">
         <Icon id="copy" class="icon--75" /></button
       ><span
-        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"
       >
         {{ image.hash }}
       </span>
     </div>
     <div>
-      <div class="field-label">
-        Short Hash:
-      </div>
+      <div class="field-label">Short Hash:</div>
       <button v-clipboard:copy="image.short_hash">
         <Icon id="copy" class="icon--75" />
       </button>

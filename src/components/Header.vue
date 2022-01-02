@@ -1,7 +1,7 @@
 <template>
   <header class="site-header section section--negative pdgv pdgh+">
     <router-link to="/" class="title">
-      <Icon id="rokkalogo" class="title__logo icon " /> Gallery
+      <Icon id="rokkalogo" class="title__logo icon" /> Gallery
     </router-link>
     <Search
       :all-tags="allTags"

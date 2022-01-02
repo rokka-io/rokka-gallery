@@ -5,9 +5,9 @@
         <router-link
           :to="
             `/${category.slug}` +
-              (this.$route.query && this.$route.query.sort
-                ? '?sort=' + encodeURIComponent(this.$route.query.sort)
-                : '')
+            (this.$route.query && this.$route.query.sort
+              ? '?sort=' + encodeURIComponent(this.$route.query.sort)
+              : '')
           "
           class="link"
           @click="$emit('input', '')"

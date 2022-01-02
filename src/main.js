@@ -27,7 +27,7 @@ Vue.config.productionTip = false;
 Vue.component('Icon', Icon);
 Vue.use({
   install(Vue) {
-    Vue.prototype.$rokka = key => {
+    Vue.prototype.$rokka = (key) => {
       if (key === '') {
         return null;
       }
@@ -71,5 +71,5 @@ router.beforeEach((to, from, next) => {
 });
 new Vue({
   router,
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#app');
