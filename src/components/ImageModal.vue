@@ -420,6 +420,7 @@ export default {
         return;
       }
       this.$emit('modal-image-closed', this.index);
+      window.location.hash = '';
       window.removeEventListener('keydown', this.keyEvent);
     },
     loadImageDataFromRokka() {
