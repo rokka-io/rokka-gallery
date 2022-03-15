@@ -13,7 +13,9 @@
             :class="`icon--50 icon icon--caret-${open ? 'down' : 'right'}`"
           >
             <use
-              :href="`/assets/icons.svg#caret-${open ? 'down' : 'right'}`"
+              :href="
+                `${publicPath}assets/icons.svg#caret-${open ? 'down' : 'right'}`
+              "
             ></use>
           </svg>
         </button>
@@ -57,6 +59,7 @@ export default {
 
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       open: false,
     };
   },
