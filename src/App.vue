@@ -13,7 +13,7 @@
 
     <div :class="['page', allAlbums.length === 0 ? 'nonav' : null]">
       <Nav
-        :categories="categories"
+        :categories="allAlbums"
         class="site-nav"
         :show="allAlbums.length > 0"
       />
@@ -51,6 +51,7 @@ import Nav from './components/nav/Nav';
 import { EventBus } from './eventBus';
 import SettingsModal from './components/SettingsModal';
 import config from '../config';
+import pathsToTree from "paths-to-tree-structure";
 
 export default {
   name: 'App',
@@ -86,9 +87,8 @@ export default {
       return 'created desc';
     },
     allAlbums() {
-      return map(this.categories, (a) => {
-        return { text: a.name };
-      });
+      return  pathsToTree(this.categories.map(c =>  `/${c.name}`)).items.map(c => {return {...c, slug: c.name}})
+
     },
     globalOptions() {
       const orgOptions =
@@ -243,7 +243,7 @@ export default {
             const categories = map(
               response.body['facets']['user:array:albums'],
               (a) => {
-                return { slug: a.value, name: a.value };
+                return { name: a.value };
               }
             );
             categories.sort((a, b) => {
@@ -313,7 +313,7 @@ export default {
 <style lang="scss">
 .page {
   display: grid;
-  grid-template-columns: minmax(0, 200px) auto;
+  grid-template-columns: minmax(0, 220px) auto;
 
   position: relative;
   &.nonav {
