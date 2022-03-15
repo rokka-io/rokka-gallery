@@ -36,8 +36,8 @@
         </div>
         <div v-if="open">
           <nav-item
-            v-for="(child, i) in category.children"
-            :key="i"
+            v-for="child in category.children"
+            :key="`${category.slug}/${child.name}`"
             :category="{ ...child, slug: `${category.slug}/${child.name}` }"
           />
         </div>
