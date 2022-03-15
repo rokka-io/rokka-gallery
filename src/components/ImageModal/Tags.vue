@@ -65,7 +65,9 @@ export default {
   computed: {
     filteredTags() {
       return this.allTags.filter(i => {
-        return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) === 0;
+        return i.text
+          ? i.text.toLowerCase().indexOf(this.tag.toLowerCase()) === 0
+          : false;
       });
     },
   },

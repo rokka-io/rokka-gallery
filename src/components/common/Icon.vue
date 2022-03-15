@@ -12,10 +12,14 @@ export default {
       required: true,
     },
   },
-
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+    };
+  },
   computed: {
     url() {
-      return `${process.env.BASE_URL}assets/icons.svg#${this.id}`;
+      return `${this.publicPath}assets/icons.svg#${this.id}`;
     },
   },
 };
