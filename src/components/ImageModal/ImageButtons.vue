@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     globalDownloadOptions() {
-      return pickBy(this.globalOptions.downloads, (el) => {
+      return pickBy(this.globalOptions.downloads, el => {
         return this.resolveButtonTitle(el.title) !== null;
       });
     },

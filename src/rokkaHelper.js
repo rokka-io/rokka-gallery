@@ -65,7 +65,7 @@ export default {
     return endformat;
   },
 
-  imageTitle: (image) => {
+  imageTitle: image => {
     if (
       image.static_metadata &&
       image.static_metadata.exif &&

@@ -9,9 +9,11 @@
       class="search-field field field--large"
       :autocomplete-items="filteredTags"
       :add-on-blur="false"
-      :placeholder="`Search ${imagesCount
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, '\'')} images in ${rokkaOrg}…`"
+      :placeholder="
+        `Search ${imagesCount
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, '\'')} images in ${rokkaOrg}…`
+      "
       @before-adding-tag="beforeAddingTag"
     />
     <button
@@ -83,7 +85,7 @@ export default {
       if (search.substr(0, 1) === ' ') {
         search = search.substr(1);
       }
-      const filtered = this.allTags.filter((i) => {
+      const filtered = this.allTags.filter(i => {
         return i.text.toLowerCase().indexOf(search) === 0;
       });
       if (filtered.length === 1 && filtered[0].text === search) {
@@ -120,13 +122,13 @@ export default {
             path: '/_/' + encodeURIComponent(newSearch),
             query,
           })
-          .catch((err) => {
+          .catch(err => {
             if (err.name === 'NavigationDuplicated') {
               EventBus.$emit('search-reload');
             }
           });
       } else {
-        this.$router.push({ path: '/', query }).catch((err) => {
+        this.$router.push({ path: '/', query }).catch(err => {
           if (err.name === 'NavigationDuplicated') {
             EventBus.$emit('search-reload');
           }
