@@ -129,11 +129,6 @@ export default {
       });
     },
   },
-  watch: {
-    images() {
-      console.log('foo');
-    },
-  },
   created() {
     //those events are a little bit ugly...
     EventBus.$on('show-gallery', () => {
