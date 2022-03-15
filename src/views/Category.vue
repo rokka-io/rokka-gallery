@@ -39,7 +39,7 @@ export default {
       default: 'created desc',
     },
     reload: {
-      type: [String, Object, Date],
+      type: [String, Object, Date, Number],
       default: null,
     },
   },

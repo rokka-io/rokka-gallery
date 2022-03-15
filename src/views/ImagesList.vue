@@ -59,7 +59,7 @@ export default {
       default: () => {},
     },
     reload: {
-      type: [String, Object, Date],
+      type: [String, Object, Date, Number],
       default: null,
     },
   },

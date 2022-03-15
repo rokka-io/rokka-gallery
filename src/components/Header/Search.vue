@@ -91,7 +91,9 @@ export default {
       if (filtered.length === 1 && filtered[0].text === search) {
         return [];
       }
-      return filtered;
+      return filtered.map(f => {
+        return {...f , text: f.text.includes(" ") ? '"' + f.text + '"' : f.text };
+      })
     },
   },
   methods: {
@@ -107,7 +109,7 @@ export default {
       this.search();
     },
     search() {
-      const newSearch = this.tag;
+      const newSearch = this.tag.trim();
       const query = {};
       if (this.$route.path === '/_/' + newSearch) {
         EventBus.$emit('search-reload');
