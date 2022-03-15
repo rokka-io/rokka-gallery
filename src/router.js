@@ -25,7 +25,7 @@ export default new Router({
       component: () => import('./views/ImagesList.vue'),
     },
     {
-      path: '/:category',
+      path: '/:category+',
       name: 'category',
       component: () => import('./views/Category.vue'),
     },
