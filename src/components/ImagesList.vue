@@ -91,7 +91,7 @@ export default {
         if (i >= 0) {
           this.showModalImage(i);
         }
-      }, 10);
+      }, 300);
     }
 
     return {
