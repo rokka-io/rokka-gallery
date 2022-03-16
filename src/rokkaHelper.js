@@ -33,7 +33,7 @@ export default {
     width,
     height = null,
     format = null,
-    stack = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true'
+    stack = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true/o-o.i-6'
   ) => {
     stack = getStackByDimensions(stack, width, height);
     format = getOriginalCompatibleFormat(image, format);
@@ -51,7 +51,7 @@ export default {
   getStackByDimensions: (
     width = null,
     height = null,
-    template = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true'
+    template = 'dynamic/resize-width-${width}-height-${height}-upscale-false-sharpen-true/o-o.i-6'
   ) => {
     return getStackByDimensions(template, width, height);
   },
