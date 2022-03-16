@@ -92,8 +92,11 @@ export default {
         return [];
       }
       return filtered.map(f => {
-        return {...f , text: f.text.includes(" ") ? '"' + f.text + '"' : f.text };
-      })
+        return {
+          ...f,
+          text: f.text.includes(' ') ? '"' + f.text + '"' : f.text,
+        };
+      });
     },
   },
   methods: {

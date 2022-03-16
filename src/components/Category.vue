@@ -97,7 +97,7 @@ export default {
       this.searching = true;
       if (this.category.length > 0) {
         search = {
-          'user:array:albums': '"'+this.category+'"',
+          'user:array:albums': '"' + this.category + '"',
           limit: 200,
         };
       }
