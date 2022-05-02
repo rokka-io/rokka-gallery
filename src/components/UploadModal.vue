@@ -133,12 +133,12 @@ export default {
   computed: {
     filteredTags() {
       return this.allTags.filter(i => {
-        return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) === 0;
+        return i.text?.toLowerCase().indexOf(this.tag.toLowerCase()) === 0;
       });
     },
     filteredAlbums() {
       return this.allAlbums.filter(i => {
-        return i.text.toLowerCase().indexOf(this.album.toLowerCase()) === 0;
+        return i.text?.toLowerCase().indexOf(this.album.toLowerCase()) === 0;
       });
     },
     albumsText() {
