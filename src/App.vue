@@ -3,7 +3,7 @@
     <Header
       :images-count="imagesCount"
       :all-tags="allTags"
-      :all-albums="allAlbums"
+      :all-albums="allAlbumsFlat"
       :rokka-key="rokkaKey"
       :rokka-org="rokkaOrg"
       :global-options="globalOptions"
@@ -21,7 +21,7 @@
       <section class="section">
         <template v-if="!this.$route.params.category">
           <router-view
-            :all-albums="allAlbums"
+            :all-albums="allAlbumsFlat"
             :all-tags="allTags"
             :query="this.$route.params.search"
             :reload="reload"
@@ -32,7 +32,7 @@
         <template v-else>
           <router-view
             :category="this.$route.params.category"
-            :all-albums="allAlbums"
+            :all-albums="allAlbumsFlat"
             :all-tags="allTags"
             :global-options="globalOptions"
             :sort="sort"
@@ -92,6 +92,11 @@ export default {
           return { ...c, slug: c.name };
         }
       );
+    },
+    allAlbumsFlat() {
+      return map(this.categories, a => {
+        return { text: a.name };
+      });
     },
     globalOptions() {
       const orgOptions =
