@@ -45,6 +45,9 @@
     "sass-loader": "8.0.2",
     "vue-template-compiler": "2.6.12"
   },
+  "engines": {
+    "node": "~14"
+  },
   "license": "MIT",
   "repository": "https://github.com/rokka-io/rokka-gallery"
 }
