@@ -72,7 +72,7 @@ export default {
       canUpload: null,
       rokkaKey:
         params.get('key') ||
-        localStorage.getItem('rokkaKey') ||
+        sessionStorage.getItem('rokkaKey') ||
         config.rokkaKey,
       rokkaOrg: this.getInitialRokkaOrg(),
       reload: '',
@@ -149,7 +149,7 @@ export default {
       console.log(`Credentials got updated`);
       this.rokkaOrg = org;
       if (key) {
-        localStorage.setItem('rokkaKey', key);
+        sessionStorage.setItem('rokkaKey', key);
         this.rokkaKey = key;
       }
       localStorage.setItem('rokkaOrg', org);
