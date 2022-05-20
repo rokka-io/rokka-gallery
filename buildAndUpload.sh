@@ -2,12 +2,15 @@
 
 set -e
 
-npm run build
 
-aws s3 sync --delete --cache-control "max-age=300, public" --profile liip --acl public-read  dist/ s3://images-liip-to/
+if [[ -f config-liip-pictures.js ]]; then
+  cp config-liip-pictures.js config.js
+  npm run build
+  rsync -avr -e "ssh -p 2202" dist/ liip@ps8.ms.bsa.oriented.ch:/var/www/html/pictures.liip.ch
 
-aws cloudfront --profile liip create-invalidation  --distribution-id E1C7LURVIIK0VC  --paths '/*' > /dev/null
+fi
 
+cp config-defaults.js config.js
 
 FOR_ROKKA=true npm run build
 aws s3 sync --delete --cache-control "max-age=300, public" --profile rokka --acl public-read  dist/ s3://rokka-gallery/gallery/
