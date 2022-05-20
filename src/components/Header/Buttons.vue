@@ -98,7 +98,7 @@ export default {
       this.sortClicked = false;
     },
     logout() {
-      EventBus.$emit('credentials-updated', '', this.rokkaOrg);
+      EventBus.$emit('credentials-updated', '', '');
     },
     showGallery() {
       EventBus.$emit('show-gallery', null);
