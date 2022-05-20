@@ -64,7 +64,7 @@ export default {
   },
   computed: {
     filteredTags() {
-      return this.allTags.filter(i => {
+      return this.allTags.filter((i) => {
         return i.text
           ? i.text.toLowerCase().indexOf(this.tag.toLowerCase()) === 0
           : false;
@@ -81,7 +81,7 @@ export default {
     metdataUpdate(newTags) {
       const metadataName = this.metadataName;
 
-      const tags = map(newTags, a => {
+      const tags = map(newTags, (a) => {
         return a.text;
       });
       const user_metadata = {};
@@ -95,7 +95,7 @@ export default {
             this.hash,
             metadataName
           )
-          .then(result => {
+          .then((result) => {
             this.$emit('close-message', 'Close (changes are already saved)');
 
             console.log(
@@ -106,7 +106,7 @@ export default {
                 result.statusCode
             );
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
             this.$emit('close-message', 'Error saving changes.');
           });
@@ -118,7 +118,7 @@ export default {
           this.hash,
           user_metadata
         )
-        .then(result => {
+        .then((result) => {
           this.$emit('close-message', 'Close (changes are already saved)');
 
           console.log(
@@ -131,7 +131,7 @@ export default {
           );
           EventBus.$emit('image-updated', this.hash);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           let errorText = 'Error saving changes.';
           if (err.statusCode === 403) {

@@ -108,7 +108,7 @@ export default {
 
           offset: cursor,
         })
-        .then(result => {
+        .then((result) => {
           if (cursor === null) {
             this.searchResults = result.body.items;
           } else {

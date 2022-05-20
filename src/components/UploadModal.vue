@@ -132,22 +132,22 @@ export default {
   },
   computed: {
     filteredTags() {
-      return this.allTags.filter(i => {
+      return this.allTags.filter((i) => {
         return i.text?.toLowerCase().indexOf(this.tag.toLowerCase()) === 0;
       });
     },
     filteredAlbums() {
-      return this.allAlbums.filter(i => {
+      return this.allAlbums.filter((i) => {
         return i.text?.toLowerCase().indexOf(this.album.toLowerCase()) === 0;
       });
     },
     albumsText() {
-      return map(this.albums, album => {
+      return map(this.albums, (album) => {
         return album.text;
       });
     },
     tagsText() {
-      return map(this.tags, tag => {
+      return map(this.tags, (tag) => {
         return tag.text;
       });
     },
@@ -166,14 +166,14 @@ export default {
     appendPromise(request) {
       const rokka = this.$rokka(this.globalOptions.rokkaKey);
 
-      return request.then(result => {
+      return request.then((result) => {
         if (result.body && result.body.items && result.body.items[0]) {
           const image = result.body.items[0];
           if (this.globalOptions.canWrite) {
             console.log(`Image ${image.name} uploaded. Applying autolabels.`);
             rokka.sourceimages
               .autolabel(this.globalOptions.rokkaOrg, result.body.items[0].hash)
-              .then(function() {
+              .then(function () {
                 console.log(`Image ${image.name} autolabeled.`);
                 EventBus.$emit(
                   'image-updated',

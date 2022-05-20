@@ -87,7 +87,7 @@ export default {
     if (window.location.hash) {
       window.setTimeout(() => {
         const hash = window.location.hash.substring(1);
-        const i = this.images.findIndex(image => image.short_hash === hash);
+        const i = this.images.findIndex((image) => image.short_hash === hash);
         if (i >= 0) {
           this.showModalImage(i);
         }
@@ -101,7 +101,7 @@ export default {
   },
   computed: {
     galleryImages() {
-      return map(this.images, image => {
+      return map(this.images, (image) => {
         let format = null;
         if (image['mimetype'] === 'video/mp4') {
           format = 'mp4';
@@ -139,7 +139,7 @@ export default {
     EventBus.$on('image-added', (hash, image) => {
       let imageInList = false;
 
-      forEach(this.images, function(value) {
+      forEach(this.images, function (value) {
         if (value.hash === hash) {
           imageInList = true;
         }
@@ -173,7 +173,7 @@ export default {
     slideComplete(a) {
       if (!a.slide.hasClickListener) {
         const img = a.slide.getElementsByClassName('slide-content')[0];
-        img.addEventListener('click', e => {
+        img.addEventListener('click', (e) => {
           if (e.target.tagName.toLowerCase() === 'a') {
             return;
           }

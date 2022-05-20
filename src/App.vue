@@ -87,14 +87,14 @@ export default {
       return 'created desc';
     },
     allAlbums() {
-      return pathsToTree(this.categories.map(c => `/${c.name}`)).items.map(
-        c => {
+      return pathsToTree(this.categories.map((c) => `/${c.name}`)).items.map(
+        (c) => {
           return { ...c, slug: c.name };
         }
       );
     },
     allAlbumsFlat() {
-      return map(this.categories, a => {
+      return map(this.categories, (a) => {
         return { text: a.name };
       });
     },
@@ -127,7 +127,7 @@ export default {
     this.checkLogin();
     this.debouncedUpdate = debounce(this.updateTags, 10000);
 
-    EventBus.$on('image-updated', hash => {
+    EventBus.$on('image-updated', (hash) => {
       // eslint-disable-next-line
       console.log(`${hash} got updated`);
       this.debouncedUpdate();
@@ -151,6 +151,8 @@ export default {
       if (key) {
         localStorage.setItem('rokkaKey', key);
         this.rokkaKey = key;
+      } else {
+        this.rokkaKey = '';
       }
       localStorage.setItem('rokkaOrg', org);
       this.setCanWrite(null);
@@ -223,7 +225,7 @@ export default {
       if (JSON.parse(localStorage.getItem('rokkaCanWrite')) === null) {
         rokka.memberships
           .get(this.rokkaOrg, 'current')
-          .then(result => {
+          .then((result) => {
             const roles = result.body.roles;
 
             this.setCanWrite(
@@ -231,7 +233,7 @@ export default {
             );
             this.setCanUpload(this.canWrite || roles.includes('upload'));
           })
-          .catch(err => {
+          .catch((err) => {
             // could be a super admin
             this.setCanWrite(true);
             this.setCanUpload(true);
@@ -245,12 +247,12 @@ export default {
           limit: 0,
           facets: 'user:array:albums',
         })
-        .then(response => {
+        .then((response) => {
           this.imagesCount = response.body.total;
           if (response.body['facets']['user:array:albums']) {
             const categories = map(
               response.body['facets']['user:array:albums'],
-              a => {
+              (a) => {
                 return { name: a.value };
               }
             );
@@ -266,7 +268,7 @@ export default {
             this.categories = categories;
           }
         })
-        .catch(e => {
+        .catch((e) => {
           if (e.statusCode === 403) {
             this.rokkaKey = '';
             this.checkLogin(
@@ -293,11 +295,11 @@ export default {
           limit: 0,
           facets: facets.join(','),
         })
-        .then(response => {
+        .then((response) => {
           let tags = {};
-          forEach(facets, facet => {
+          forEach(facets, (facet) => {
             if (response.body['facets'][facet]) {
-              forEach(response.body['facets'][facet], a => {
+              forEach(response.body['facets'][facet], (a) => {
                 tags[a.value] = true;
               });
             }

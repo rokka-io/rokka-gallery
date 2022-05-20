@@ -5,7 +5,7 @@
         <button
           type="button"
           class="btn btn--bare btn--small toggle-btn"
-          style="padding: 5px 0px 5px 0;width: 14px"
+          style="padding: 5px 0px 5px 0; width: 14px"
           @click="toggleOpen()"
         >
           <svg
@@ -13,9 +13,9 @@
             :class="`icon--50 icon icon--caret-${open ? 'down' : 'right'}`"
           >
             <use
-              :href="
-                `${publicPath}assets/icons.svg#caret-${open ? 'down' : 'right'}`
-              "
+              :href="`${publicPath}assets/icons.svg#caret-${
+                open ? 'down' : 'right'
+              }`"
             ></use>
           </svg>
         </button>
@@ -25,9 +25,9 @@
           <router-link
             :to="
               `/${category.slug}` +
-                (this.$route.query && this.$route.query.sort
-                  ? '?sort=' + encodeURIComponent(this.$route.query.sort)
-                  : '')
+              (this.$route.query && this.$route.query.sort
+                ? '?sort=' + encodeURIComponent(this.$route.query.sort)
+                : '')
             "
             class="link"
             style="padding-left: 3px"

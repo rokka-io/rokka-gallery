@@ -125,10 +125,10 @@ export default {
             operator: 'or',
             limit: 500,
           };
-          forEach(searchFields, key => {
+          forEach(searchFields, (key) => {
             search[key] = this.query;
           });
-          forEach(searchFieldsLowerCased, key => {
+          forEach(searchFieldsLowerCased, (key) => {
             search[key] = this.query.toLowerCase();
           });
         }
@@ -139,7 +139,7 @@ export default {
           sort: this.sort,
           offset: cursor,
         })
-        .then(result => {
+        .then((result) => {
           if (cursor === null) {
             this.searchResults = result.body.items;
           } else {

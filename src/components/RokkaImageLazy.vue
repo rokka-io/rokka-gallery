@@ -3,11 +3,9 @@
     :key="image.short_hash"
     :organization="image.organization"
     :hash="image.hash"
-    :filename="
-      `${image.name.replace(/\.[^/.]+$/, '').replace(/[.?]/g, '_')}_v5781632.${
-        image.format
-      }`
-    "
+    :filename="`${image.name
+      .replace(/\.[^/.]+$/, '')
+      .replace(/[.?]/g, '_')}_v5781632.${image.format}`"
     :stack="stack"
     :format="format"
     :alt="alt"

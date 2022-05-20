@@ -143,7 +143,7 @@ import rokkaImageLazy from './RokkaImageLazy';
 
 dayjs.extend(LocalizedFormat);
 
-const capital_letter = str => {
+const capital_letter = (str) => {
   str = str.split(' ');
 
   for (var i = 0, x = str.length; i < x; i++) {
@@ -243,8 +243,10 @@ export default {
               b = 'Unsplash Artist';
               a = `<a target="_blank" href="https://unsplash.com/@${
                 this.localImage.user_metadata['unsplash_artist_id']
-              }">${this.localImage.static_metadata.exif.artist ||
-                this.localImage.user_metadata['unsplash_artist_id']}</a>`;
+              }">${
+                this.localImage.static_metadata.exif.artist ||
+                this.localImage.user_metadata['unsplash_artist_id']
+              }</a>`;
             } else if (b === 'unsplash_photo_id') {
               b = 'Unsplash Photo ID';
               a = `<a target="_blank" href="https://unsplash.com/photos/${a}">${a}</a>`;
@@ -427,7 +429,7 @@ export default {
           .sourceimages.get(this.image.organization, this.image.hash, {
             deleted: true,
           })
-          .then(response => {
+          .then((response) => {
             if (response.body.hash !== this.image.hash) {
               // eslint-disable-next-line
               console.log('Wrong hash loaded. ' + response.body.hash);
@@ -452,7 +454,7 @@ export default {
       this.$emit('modal-image-clicked', this.index);
     },
     beforeLabelsUpdate(newTags) {
-      newTags = map(newTags, tag => {
+      newTags = map(newTags, (tag) => {
         tag.text = tag.text.toLowerCase();
         return tag;
       });
@@ -463,7 +465,7 @@ export default {
         this.localImage.user_metadata &&
         this.localImage.user_metadata[metadata]
       ) {
-        return map(this.localImage.user_metadata[metadata], a => {
+        return map(this.localImage.user_metadata[metadata], (a) => {
           return { text: a };
         }).sort();
       }
