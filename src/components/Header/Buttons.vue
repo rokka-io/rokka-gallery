@@ -98,7 +98,7 @@ export default {
       this.sortClicked = false;
     },
     logout() {
-      EventBus.$emit('credentials-updated', '', '');
+      EventBus.$emit('credentials-updated', { logout: true });
     },
     showGallery() {
       EventBus.$emit('show-gallery', null);

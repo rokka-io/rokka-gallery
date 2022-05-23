@@ -12,8 +12,9 @@ import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 import rokkaHelper from './rokkaHelper';
 
-export const ROKKA_TOKEN = 'rokka-gallery-token';
-export const ROKKA_ORG = 'rokka-gallery-org';
+export const ROKKA_TOKEN = 'rokka-dashboard-token';
+export const ROKKA_ORG = 'rokka-dashboard-org';
+const ROKKA_DASHBOARD_IPS = 'rokka-dashboard-ips';
 
 Vue.use(Toast, {
   position: 'top-right',
@@ -28,6 +29,22 @@ Vue.use(VModal, {
 });
 Vue.config.productionTip = false;
 
+export const apiTokenSetCallback = (token, payload) => {
+  if (token) {
+    localStorage.setItem(ROKKA_TOKEN, token);
+    if (payload && payload.ips) {
+      // store the ips and remember the last 8 (max is 10 on the API side)
+      localStorage.setItem(
+        ROKKA_DASHBOARD_IPS,
+        payload.ips.slice(0, 8).join(',')
+      );
+    }
+  } else {
+    localStorage.removeItem(ROKKA_TOKEN);
+  }
+};
+const max_age = 3600 * 24 * 7;
+
 Vue.component('Icon', Icon);
 Vue.use({
   install(Vue) {
@@ -38,8 +55,14 @@ Vue.use({
       return rokka({
         apiKey: key,
         apiTokenGetCallback: () => localStorage.getItem(ROKKA_TOKEN),
-        apiTokenSetCallback: (token) =>
-          localStorage.setItem(ROKKA_TOKEN, token),
+        apiTokenSetCallback: apiTokenSetCallback,
+        apiTokenRefreshTime: max_age - 3600 * 24,
+        apiTokenOptions: {
+          //no_ip_protection: true, // not sure about this
+          expires_in: max_age,
+          renewable: true,
+          ips: `request_ip,${localStorage.getItem(ROKKA_DASHBOARD_IPS) || ''}`,
+        },
         // apiHost: 'http://api.rokka.test/app_dev.php',
       });
     };

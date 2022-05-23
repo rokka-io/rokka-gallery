@@ -103,11 +103,15 @@ export default {
           ? config.orgOptions[this.rokkaOrg]
           : {};
 
-      let canWrite = JSON.parse(localStorage.getItem('rokkaCanWrite'));
+      let canWrite = JSON.parse(
+        sessionStorage.getItem('rokka-gallery-canWrite')
+      );
       if (this.canWrite !== canWrite) {
         this.setCanWrite(canWrite);
       }
-      let canUpload = JSON.parse(localStorage.getItem('rokkaCanUpload'));
+      let canUpload = JSON.parse(
+        sessionStorage.getItem('rokka-gallery-canUpload')
+      );
       if (this.canUpload !== canUpload) {
         this.setCanUpload(canUpload);
       }
@@ -138,27 +142,37 @@ export default {
       // eslint-disable-next-line
       console.log('reload search');
     });
-    EventBus.$on('credentials-updated', (token, org) => {
-      this.credentialsUpdated(token, org);
+    EventBus.$on('credentials-updated', (values) => {
+      this.credentialsUpdated(values);
     });
     this.updateTags();
   },
 
   methods: {
-    credentialsUpdated(token, org) {
+    credentialsUpdated({ token, org, key, logout }) {
       // eslint-disable-next-line
-      console.log(`Credentials got updated`, token);
-      this.rokkaOrg = org;
-
-      if (token === null) {
-        this.$rokka().user.setToken(null);
-        this.rokkaToken = null;
-      } else  {
-        localStorage.setItem(ROKKA_TOKEN, token);
-        this.rokkaToken = token;
+      console.log(`Credentials got updated`, token, org, key);
+      if (org) {
+        this.rokkaOrg = org;
+      } else {
+        this.rokkaOrg = '';
       }
 
-      localStorage.setItem(ROKKA_ORG, org);
+      if (logout === true) {
+        this.$rokka().user.setToken(null);
+        this.rokkaToken = null;
+        this.rokkaKey = '';
+      } else {
+        if (token) {
+          this.$rokka().user.setToken(token);
+          this.rokkaToken = token;
+        }
+        if (key) {
+          this.rokkaKey = key;
+        }
+      }
+
+      localStorage.setItem(ROKKA_ORG, this.rokkaOrg);
       this.setCanWrite(null);
       this.setCanUpload(null);
       this.updateTags();
@@ -179,11 +193,11 @@ export default {
       }
     },
     setCanWrite(value) {
-      localStorage.setItem('rokkaCanWrite', value);
+      sessionStorage.setItem('rokka-gallery-canWrite', value);
       this.canWrite = value;
     },
     setCanUpload(value) {
-      localStorage.setItem('rokkaCanUpload', value);
+      sessionStorage.setItem('rokka-gallery-canUpload', value);
       this.canUpload = value;
     },
     getInitialRokkaOrg() {
@@ -194,14 +208,20 @@ export default {
         this.$rokka(params.get('key'))
           .user.getNewToken()
           .then((result) => {
-            this.credentialsUpdated(result.body.token, params.get('org'));
+            this.credentialsUpdated({
+              token: result.body.token,
+              org: params.get('org'),
+            });
           })
           .catch((e) => {
-            this.credentialsUpdated('', params.get('org'));
+            this.credentialsUpdated({ logout: true, org: params.get('org') });
           });
       }
       return (
-        params.get('org') || localStorage.getItem(ROKKA_ORG) || config.rokkaOrg
+        params.get('org') ||
+        localStorage.getItem(ROKKA_ORG) ||
+        config.rokkaOrg ||
+        ''
       );
     },
     checkLogin(title = '') {
@@ -213,7 +233,6 @@ export default {
       }
     },
     showSettingsModal(title = null) {
-      console.log('show modal', this.$rokka().user.getToken());
       this.$modal.show(
         SettingsModal,
         {
@@ -239,7 +258,9 @@ export default {
         return;
       }
 
-      if (JSON.parse(localStorage.getItem('rokkaCanWrite')) === null) {
+      if (
+        JSON.parse(sessionStorage.getItem('rokka-gallery-canWrite')) === null
+      ) {
         rokka.memberships
           .get(this.rokkaOrg, 'current')
           .then((result) => {
@@ -252,8 +273,10 @@ export default {
           })
           .catch((err) => {
             // could be a super admin
-            this.setCanWrite(true);
-            this.setCanUpload(true);
+            if (this.rokkaKey || this.rokkaToken) {
+              this.setCanWrite(true);
+              this.setCanUpload(true);
+            }
             // eslint-disable-next-line
             console.log('Could not get user data', err);
           });
@@ -288,14 +311,15 @@ export default {
         .catch((e) => {
           if (e.statusCode === 403) {
             this.rokkaKey = '';
-            this.checkLogin(
-              'Your credentials are wrong, please use the correct api-key or org'
-            );
+            this.credentialsUpdated({ logout: true });
+            return;
+          }
+          if (e.statusCode === 401) {
+            this.credentialsUpdated({ logout: true });
             return;
           }
           if (e.statusCode === 404) {
             this.checkLogin('This organization this not exist');
-            return;
           }
         });
 
