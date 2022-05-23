@@ -43,7 +43,7 @@ export const apiTokenSetCallback = (token, payload) => {
     localStorage.removeItem(ROKKA_TOKEN);
   }
 };
-const max_age = 3600 * 24 * 7;
+const max_age = 3600 * 24 * 3;
 
 Vue.component('Icon', Icon);
 Vue.use({
@@ -56,7 +56,7 @@ Vue.use({
         apiKey: key,
         apiTokenGetCallback: () => localStorage.getItem(ROKKA_TOKEN),
         apiTokenSetCallback: apiTokenSetCallback,
-        apiTokenRefreshTime: max_age - 3600 * 24,
+        apiTokenRefreshTime: max_age - 3600 * 24, // refresh it after a day
         apiTokenOptions: {
           //no_ip_protection: true, // not sure about this
           expires_in: max_age,
