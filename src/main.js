@@ -11,6 +11,10 @@ import Toast from 'vue-toastification';
 // Import the CSS or use your own!
 import 'vue-toastification/dist/index.css';
 import rokkaHelper from './rokkaHelper';
+
+export const ROKKA_TOKEN = 'rokka-gallery-token';
+export const ROKKA_ORG = 'rokka-gallery-org';
+
 Vue.use(Toast, {
   position: 'top-right',
   timeout: 3000,
@@ -28,11 +32,14 @@ Vue.component('Icon', Icon);
 Vue.use({
   install(Vue) {
     Vue.prototype.$rokka = (key) => {
-      if (key === '') {
+      /*if (key === '') {
         return null;
-      }
+      }*/
       return rokka({
         apiKey: key,
+        apiTokenGetCallback: () => localStorage.getItem(ROKKA_TOKEN),
+        apiTokenSetCallback: (token) =>
+          localStorage.setItem(ROKKA_TOKEN, token),
         // apiHost: 'http://api.rokka.test/app_dev.php',
       });
     };
@@ -63,8 +70,8 @@ router.beforeEach((to, from, next) => {
   } else if (to.params.search) {
     title = title + ' ·  ' + to.params.search;
   }
-  if (localStorage.getItem('rokkaOrg')) {
-    title = title + ' (in ' + localStorage.getItem('rokkaOrg') + ')';
+  if (localStorage.getItem(ROKKA_ORG)) {
+    title = title + ' (in ' + localStorage.getItem(ROKKA_ORG) + ')';
   }
   next();
   document.title = title;

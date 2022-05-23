@@ -1,6 +1,6 @@
 <template>
   <div id="modal">
-    <form @submit="save">
+    <form>
       <TitleLine title="Settings / Credentials" modal-name="modal-settings" />
 
       <div>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="settings-form-actions">
-          <input type="submit" class="button" value="Save" />
+          <input type="submit" class="button" value="Save" @click="save" />
           <button class="button cancel" @click="$modal.hide('modal-settings')">
             Cancel
           </button>
@@ -75,12 +75,21 @@ export default {
   methods: {
     save(e) {
       e.preventDefault();
-      EventBus.$emit(
-        'credentials-updated',
-        this.rokkaKeyField,
-        this.rokkaOrgField
-      );
-      this.$emit('close');
+      const rokka = this.$rokka(this.rokkaKeyField);
+      rokka.user
+        .getNewToken(this.rokkaKeyField)
+        .then((response) => {
+          EventBus.$emit(
+            'credentials-updated',
+            response.token,
+            this.rokkaOrgField
+          );
+          this.$emit('close');
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$toast.error('Could not update credentials');
+        });
     },
   },
 };

@@ -6,7 +6,7 @@
       <div class="upload-files">
         <vue-rokka-uploader
           ref="upload"
-          :rokka-key="globalOptions.rokkaKey"
+          :rokka-token="globalOptions.rokkaToken"
           :rokka-org="globalOptions.rokkaOrg"
           :append-promise="appendPromise"
           :image-metadata="imageMetadata"
@@ -164,7 +164,7 @@ export default {
       return metadata;
     },
     appendPromise(request) {
-      const rokka = this.$rokka(this.globalOptions.rokkaKey);
+      const rokka = this.$rokka();
 
       return request.then((result) => {
         if (result.body && result.body.items && result.body.items[0]) {

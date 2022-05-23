@@ -52,6 +52,7 @@ import { EventBus } from './eventBus';
 import SettingsModal from './components/SettingsModal';
 import config from '../config';
 import pathsToTree from 'paths-to-tree-structure';
+import { ROKKA_ORG, ROKKA_TOKEN } from '@/main';
 
 export default {
   name: 'App',
@@ -70,10 +71,8 @@ export default {
       allTags: [],
       canWrite: null,
       canUpload: null,
-      rokkaKey:
-        params.get('key') ||
-        localStorage.getItem('rokkaKey') ||
-        config.rokkaKey,
+      rokkaKey: params.get('key') || config.rokkaKey,
+      rokkaToken: localStorage.getItem(ROKKA_TOKEN),
       rokkaOrg: this.getInitialRokkaOrg(),
       reload: '',
       //sort: 'taken_or_created asc'
@@ -114,17 +113,19 @@ export default {
       }
       return {
         rokkaOrg: this.rokkaOrg,
-        rokkaKey: this.rokkaKey,
         downloads: orgOptions.downloads || null,
         deleteEnabled: orgOptions.deleteEnabled || false,
         canWrite: this.canWrite,
         canUpload: this.canUpload,
+        rokkaToken: this.rokkaToken,
+        rokkaKey: this.rokkaKey,
       };
     },
   },
 
-  created() {
+  async created() {
     this.checkLogin();
+
     this.debouncedUpdate = debounce(this.updateTags, 10000);
 
     EventBus.$on('image-updated', (hash) => {
@@ -137,38 +138,43 @@ export default {
       // eslint-disable-next-line
       console.log('reload search');
     });
-    EventBus.$on('credentials-updated', (key, org) => {
-      this.credentialsUpdated(key, org);
+    EventBus.$on('credentials-updated', (token, org) => {
+      this.credentialsUpdated(token, org);
     });
     this.updateTags();
   },
 
   methods: {
-    credentialsUpdated(key, org) {
+    credentialsUpdated(token, org) {
       // eslint-disable-next-line
-      console.log(`Credentials got updated`);
+      console.log(`Credentials got updated`, token);
       this.rokkaOrg = org;
-      if (key) {
-        localStorage.setItem('rokkaKey', key);
-        this.rokkaKey = key;
-      } else {
-        this.rokkaKey = '';
+
+      if (token === null) {
+        this.$rokka().user.setToken(null);
+        this.rokkaToken = null;
+      } else  {
+        localStorage.setItem(ROKKA_TOKEN, token);
+        this.rokkaToken = token;
       }
-      localStorage.setItem('rokkaOrg', org);
+
+      localStorage.setItem(ROKKA_ORG, org);
       this.setCanWrite(null);
       this.setCanUpload(null);
       this.updateTags();
-      const query = this.$route.query || {};
+      const query = { ...this.$route.query } || {};
+      delete query.org;
+      delete query.key;
       this.$router
         .push({
           path: this.$route.path || '/',
-          query,
+          query: query,
           hash: window.location.hash,
         })
         .catch(() => {
           this.reload = new Date();
         });
-      if (!this.rokkaKey) {
+      if (!this.rokkaToken) {
         this.checkLogin();
       }
     },
@@ -185,18 +191,29 @@ export default {
       const params = new URLSearchParams(uri);
       if (params.get('org')) {
         // remove login info from url
-        this.credentialsUpdated(params.get('key'), params.get('org'));
+        this.$rokka(params.get('key'))
+          .user.getNewToken()
+          .then((result) => {
+            this.credentialsUpdated(result.body.token, params.get('org'));
+          })
+          .catch((e) => {
+            this.credentialsUpdated('', params.get('org'));
+          });
       }
       return (
-        params.get('org') || localStorage.getItem('rokkaOrg') || config.rokkaOrg
+        params.get('org') || localStorage.getItem(ROKKA_ORG) || config.rokkaOrg
       );
     },
     checkLogin(title = '') {
-      if ((title !== '' || this.rokkaKey === '') && this.$modal) {
+      if (
+        (title !== '' || !(this.$rokka().user.getToken() || this.rokkaKey)) &&
+        this.$modal
+      ) {
         this.showSettingsModal(title);
       }
     },
     showSettingsModal(title = null) {
+      console.log('show modal', this.$rokka().user.getToken());
       this.$modal.show(
         SettingsModal,
         {
