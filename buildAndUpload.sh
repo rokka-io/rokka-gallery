@@ -10,7 +10,7 @@ if [[ -f config-liip-pictures.js ]]; then
 
 fi
 
-cp config-defaults.js config.js
+cp config-default.js config.js
 
 FOR_ROKKA=true npm run build
 aws s3 sync --delete --cache-control "max-age=300, public" --profile rokka --acl public-read  dist/ s3://rokka-gallery/gallery/

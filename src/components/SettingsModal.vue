@@ -36,7 +36,11 @@
         </div>
         <div class="settings-form-actions">
           <input type="submit" class="button" value="Save" />
-          <button class="button cancel" @click="$modal.hide('modal-settings')">
+          <button
+            type="reset"
+            class="button cancel"
+            @click="$modal.hide('modal-settings')"
+          >
             Cancel
           </button>
         </div>
@@ -75,12 +79,21 @@ export default {
   methods: {
     save(e) {
       e.preventDefault();
-      EventBus.$emit(
-        'credentials-updated',
-        this.rokkaKeyField,
-        this.rokkaOrgField
-      );
-      this.$emit('close');
+      const rokka = this.$rokka(this.rokkaKeyField);
+      rokka.user
+        .getNewToken(this.rokkaKeyField)
+        .then((response) => {
+          EventBus.$emit('credentials-updated', {
+            org: this.rokkaOrgField,
+            token: response.token,
+            key: this.rokkaKeyField,
+          });
+          this.$emit('close');
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$toast.error('Could not update credentials');
+        });
     },
   },
 };

@@ -47,7 +47,7 @@ export default {
   },
   created() {
     let state = JSON.parse(
-      localStorage.getItem('rokkaSection_' + this.keyName)
+      localStorage.getItem('rokka-gallery-section-' + this.keyName)
     );
     if (state === null) {
       state = this.defaultState;
@@ -57,7 +57,7 @@ export default {
   methods: {
     sectionOpenClose() {
       this.openState = !this.openState;
-      localStorage.setItem('rokkaSection_' + this.keyName, this.openState);
+      localStorage.setItem('rokka-gallery-section-' + this.keyName, this.openState);
     },
   },
 };
