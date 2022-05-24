@@ -79,7 +79,6 @@ export default {
   methods: {
     save(e) {
       e.preventDefault();
-      console.log('current key', this.rokkaKeyField);
       const rokka = this.$rokka(this.rokkaKeyField);
       rokka.user
         .getNewToken(this.rokkaKeyField)
