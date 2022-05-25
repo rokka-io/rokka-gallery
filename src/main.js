@@ -17,7 +17,7 @@ export const ROKKA_ORG = 'rokka-dashboard-org';
 const ROKKA_DASHBOARD_IPS = 'rokka-dashboard-ips';
 
 Vue.use(Toast, {
-  position: 'top-right',
+  position: 'bottom-right',
   timeout: 3000,
 });
 
