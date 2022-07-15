@@ -399,7 +399,11 @@ export default {
     index() {
       this.localImage = this.image;
       if (this.localImage) {
-        window.location.hash = this.localImage.short_hash;
+        history.pushState(
+          {},
+          document.title,
+          `${window.location.pathname}${window.location.search}#${this.localImage.short_hash}`
+        );
       }
       this.loadImageDataFromRokka();
     },
@@ -420,7 +424,11 @@ export default {
         return;
       }
       this.$emit('modal-image-closed', this.index);
-      window.location.hash = '';
+      history.pushState(
+        {},
+        document.title,
+        `${window.location.pathname}${window.location.search}`
+      );
       window.removeEventListener('keydown', this.keyEvent);
     },
     loadImageDataFromRokka() {
