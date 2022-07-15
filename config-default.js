@@ -89,6 +89,8 @@ export default {
       },
     },
     liip: {
+      deleteEnabled: true,
+
       downloads: {
         original: {
           title: 'Open original',
