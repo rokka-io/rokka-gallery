@@ -85,7 +85,7 @@ export default {
         .then((response) => {
           EventBus.$emit('credentials-updated', {
             org: this.rokkaOrgField,
-            token: response.token,
+            token: response.body.token,
             key: this.rokkaKeyField,
           });
           this.$emit('close');
