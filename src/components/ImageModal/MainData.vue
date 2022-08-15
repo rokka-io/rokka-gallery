@@ -18,6 +18,13 @@
       {{ image && image.short_hash ? image.short_hash : '' }}
     </div>
     <div>
+      <div class="field-label">Binary Hash:</div>
+      <button v-clipboard:copy="image.binary_hash">
+        <Icon id="copy" class="icon--75" />
+      </button>
+      {{ image && image.binary_hash ? image.binary_hash : '' }}
+    </div>
+    <div>
       <div class="field-label">Created:</div>
       {{ humanReadableCreated }}
     </div>
