@@ -39,6 +39,7 @@ export default {
   orgOptions: {
     chregus: {
       deleteEnabled: true,
+      favoriteHideEnabled: true,
     },
     'migros-artikelabfrage': {
       deleteEnabled: true,
@@ -109,9 +110,13 @@ export default {
         glitchit,
       },
     },
+    'hwz-events': {
+      deleteEnabled: true,
+      favoriteHideEnabled: true,
+    },
     'liip-pictures': {
       deleteEnabled: true,
-
+      favoriteHideEnabled: true,
       downloads: {
         original: {
           title: 'Download original',
