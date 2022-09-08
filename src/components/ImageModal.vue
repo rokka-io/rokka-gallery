@@ -64,6 +64,25 @@
                 :autocomplete-min-length="0"
                 @close-message="closeMessageUpdate"
               />
+
+              <Checkbox
+                v-if="globalOptions.favoriteHideEnabled"
+                label="Favorite"
+                metadata-name="int:favorite"
+                :image="localImage"
+                :hash="image.hash"
+                :global-options="globalOptions"
+                @image-do-reload="loadImageDataFromRokka"
+              />
+              <Checkbox
+                v-if="globalOptions.favoriteHideEnabled"
+                label="Hide"
+                metadata-name="int:hide"
+                :image="localImage"
+                :hash="image.hash"
+                :global-options="globalOptions"
+                @image-do-reload="loadImageDataFromRokka"
+              />
             </CollapsibleSection>
 
             <CollapsibleSection
@@ -136,6 +155,7 @@ import rokkaHelper from '../rokkaHelper';
 import CollapsibleSection from './ImageModal/CollapsibleSection';
 import TitleLine from './Modal/TitleLine';
 import Tags from './ImageModal/Tags';
+import Checkbox from './ImageModal/Checkbox';
 import ImageButtons from './ImageModal/ImageButtons';
 import DeleteButton from './ImageModal/DeleteButton';
 import MainData from './ImageModal/MainData';
@@ -160,6 +180,7 @@ export default {
     DeleteButton,
     ImageButtons,
     Tags,
+    Checkbox,
     TitleLine,
     CollapsibleSection,
     rokkaImageLazy,

@@ -119,6 +119,7 @@ export default {
         rokkaOrg: this.rokkaOrg,
         downloads: orgOptions.downloads || null,
         deleteEnabled: orgOptions.deleteEnabled || false,
+        favoriteHideEnabled: orgOptions.favoriteHideEnabled || false,
         canWrite: this.canWrite,
         canUpload: this.canUpload,
         rokkaToken: this.rokkaToken,
