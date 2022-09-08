@@ -57,7 +57,10 @@ export default {
   methods: {
     sectionOpenClose() {
       this.openState = !this.openState;
-      localStorage.setItem('rokka-gallery-section-' + this.keyName, this.openState);
+      localStorage.setItem(
+        'rokka-gallery-section-' + this.keyName,
+        this.openState
+      );
     },
   },
 };
