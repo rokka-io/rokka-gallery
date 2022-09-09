@@ -1,5 +1,6 @@
 <template>
   <svg :class="`icon icon--${id}`">
+    <title v-if="title">{{ title }}</title>
     <use :xlink:href="url" />
   </svg>
 </template>
@@ -10,6 +11,11 @@ export default {
     id: {
       type: String,
       required: true,
+    },
+    title: {
+      type: String,
+      required: false,
+      default: null,
     },
   },
   data() {

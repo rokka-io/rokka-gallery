@@ -12,11 +12,13 @@
       <icon
         v-if="image.user_metadata && image.user_metadata['int:hide']"
         id="hide"
+        title="Hidden"
         class="icon--75 mrgr--"
       />
       <icon
         v-if="image.user_metadata && image.user_metadata['int:favorite']"
         id="star"
+        title="Favorite"
         class="icon--75 mrgr--"
       />
       {{ imageTitle }}
