@@ -8,7 +8,19 @@
       :style="{ maxWidth: '200px', maxHeight: '200px' }"
     />
 
-    <span class="image-block__name">{{ imageTitle }}</span>
+    <div class="image-block__name">
+      <icon
+        v-if="image.user_metadata && image.user_metadata['int:hide']"
+        id="hide"
+        class="icon--75 mrgr--"
+      />
+      <icon
+        v-if="image.user_metadata && image.user_metadata['int:favorite']"
+        id="star"
+        class="icon--75 mrgr--"
+      />
+      {{ imageTitle }}
+    </div>
   </div>
 </template>
 

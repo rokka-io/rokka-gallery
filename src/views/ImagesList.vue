@@ -19,6 +19,7 @@
       :searching="searching"
       :cursor-next="searchCursorNext"
       @load-more="search(searchCursorNext)"
+      @update-image="(index, image) => updateImage(index, image)"
     />
   </div>
   <div v-else class="text-lead text-muted text-center">
@@ -153,6 +154,9 @@ export default {
           }
           this.searching = false;
         });
+    },
+    updateImage(index, image) {
+      this.searchResults[index] = image;
     },
   },
 };

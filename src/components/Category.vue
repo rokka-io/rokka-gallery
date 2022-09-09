@@ -12,6 +12,7 @@
       :searching="searching"
       :cursor-next="searchCursorNext"
       @load-more="search(searchCursorNext)"
+      @update-image="(index, image) => updateImage(index, image)"
     />
   </div>
 </template>
@@ -122,6 +123,9 @@ export default {
           }
           this.searching = false;
         });
+    },
+    updateImage(index, image) {
+      this.searchResults[index] = image;
     },
   },
 };

@@ -444,7 +444,7 @@ export default {
         e.stop();
         return;
       }
-      this.$emit('modal-image-closed', this.index);
+      this.$emit('modal-image-closed', this.index, this.localImage);
       history.pushState(
         {},
         document.title,

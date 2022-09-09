@@ -162,7 +162,8 @@ export default {
       this.$modal.show('modal-image');
     },
 
-    modalImageClosed() {
+    modalImageClosed(index, image) {
+      this.$emit('update-image', index, image);
       this.modalIndex = null;
     },
 
