@@ -108,7 +108,7 @@ export default {
     will-change: transform;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
   }
-  /deep/ img {
+  :deep(img) {
     margin-left: auto;
     margin-right: auto;
   }

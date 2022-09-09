@@ -71,7 +71,7 @@
     padding: 0 16px;
   }
 
-  /deep/ .field-label {
+  :deep( .field-label) {
     display: inline;
   }
   
@@ -111,7 +111,7 @@
     padding: 16px;
   }
 
-  /deep/ .title {
+  :deep(.title) {
     font-size: 18px;
     padding: 4px 8px;
 
@@ -137,7 +137,7 @@
     left: 20px;
   }
 
-  /deep/ .button {
+  :deep(.button) {
     position: relative;
     background-color: $green-700; //rgba(255, 255, 255, 0.15);
     color: white;
@@ -152,25 +152,25 @@
     }
   }
 
-  /deep/ .button.cancel {
+  :deep(.button.cancel) {
     background-color: white; //rgba(255, 255, 255, 0.15);
     color: black;
     border: 1px  $green-700 solid;
   }
 
-  /deep/ .button.warning {
+  :deep(.button.warning) {
     background-color: darkred ;
     border: 1px darkred solid;
 
   }
 
-  /deep/ .button.prewarning {
+  :deep(.button.prewarning) {
     background-color: white; //rgba(255, 255, 255, 0.15);
     color: black;
     border: 1px lightcoral solid;
   }
 
-  /deep/ .vue-tags-input {
+  :deep(.vue-tags-input) {
     max-width: none !important;
 
     .ti-selected-item {

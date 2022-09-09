@@ -146,13 +146,13 @@ export default {
 .search {
   position: relative;
 
-  /deep/ .ti-item {
+  :deep(.ti-item) {
     color: black;
     font-size: 1.2rem;
   }
 
-  /deep/ .ti-input,
-  /deep/ .ti-new-tag-input {
+  :deep(.ti-input),
+  :deep(.ti-new-tag-input) {
     border-color: transparent !important;
     background-color: transparent !important;
     color: white !important;
@@ -167,7 +167,7 @@ export default {
     }
   }
 
-  /deep/ .vue-tags-input {
+  :deep(.vue-tags-input) {
     max-width: none !important;
 
     .ti-selected-item {

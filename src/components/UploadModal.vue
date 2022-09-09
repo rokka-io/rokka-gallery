@@ -212,18 +212,18 @@ export default {
 @import '_modal.scss';
 
 #modal {
-  /deep/ #upload_image_form--default {
+  :deep(#upload_image_form--default) {
     background-color: #eee;
     height: calc(100% - #{$modal-header-height});
   }
 
-  /deep/ .vue_component__upload--image {
+  :deep(.vue_component__upload--image) {
     height: calc(100%);
   }
-  /deep/ .vue-tags-input {
+  :deep(.vue-tags-input) {
     max-width: 95% !important;
   }
-  /deep/ .upload_image_form__thumbnails {
+  :deep(.upload_image_form__thumbnails) {
     height: calc(100% - 10px);
   }
   #footer {
@@ -233,8 +233,8 @@ export default {
     height: calc(100% - #{$modal-header-height});
     padding-bottom: 20px;
   }
-  /deep/ .rokka-uploader {
-    /deep/ .drop-active h3 {
+  :deep(.rokka-uploader) {
+    :deep(.drop-active h3) {
       margin: -0.5em 0 0;
       position: absolute;
       top: 50%;
@@ -248,7 +248,7 @@ export default {
       padding: 0;
     }
 
-    /deep/ .removeButton {
+    :deep(.removeButton) {
       background-color: transparent;
       border: 0;
       font-weight: 100;
@@ -256,16 +256,16 @@ export default {
       cursor: pointer;
     }
 
-    /deep/ .remove {
+    :deep(.remove) {
       width: 5px;
       padding: 0;
     }
 
-    /deep/ td {
+    :deep(td) {
       padding: 3px 0;
     }
   }
-  /deep/ .button {
+  :deep(.button) {
     display: inline-block;
     vertical-align: middle;
     font-size: 16px;
