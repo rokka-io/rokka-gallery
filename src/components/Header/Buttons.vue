@@ -45,7 +45,7 @@
 import UploadModal from '../UploadModal';
 import SettingsModal from '../SettingsModal';
 import { EventBus } from '../../eventBus';
-import { settingsModalProps } from '@/consts';
+import { settingsModalProps, uploadModalProps } from '@/consts';
 
 export default {
   name: 'Buttons',
@@ -112,15 +112,7 @@ export default {
           allTags: this.allTags,
           globalOptions: this.globalOptions,
         },
-        {
-          height: '700px',
-          width: '600px',
-          maxWidth: 1000,
-          maxHeight: 1000,
-          name: 'modal-upload',
-          resizable: true,
-          clickToClose: true,
-        }
+        uploadModalProps
       );
     },
     showSettingsModal() {

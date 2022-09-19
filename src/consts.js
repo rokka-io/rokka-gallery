@@ -8,3 +8,13 @@ export const settingsModalProps = {
   clickToClose: true,
   dialog: false,
 };
+
+export const uploadModalProps = {
+  height: '700px',
+  width: '600px',
+  maxWidth: 1000,
+  maxHeight: 1000,
+  name: 'modal-upload',
+  resizable: true,
+  clickToClose: true,
+};

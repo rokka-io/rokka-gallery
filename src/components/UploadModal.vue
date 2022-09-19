@@ -152,6 +152,21 @@ export default {
       });
     },
   },
+  created() {
+    const uri = window.location.search.substring(1);
+    const params = new URLSearchParams(uri);
+    if (params.get('upload')) {
+      this.albumsUpdate(
+        params
+          .get('upload')
+          .split(',')
+          .map((album) => ({
+            text: album,
+          }))
+      );
+    }
+  },
+
   methods: {
     imageMetadata() {
       const metadata = { meta_user: {} };

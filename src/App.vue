@@ -53,7 +53,8 @@ import SettingsModal from './components/SettingsModal';
 import config from '../config';
 import pathsToTree from 'paths-to-tree-structure';
 import { ROKKA_ORG, ROKKA_TOKEN } from '@/main';
-import { settingsModalProps } from '@/consts';
+import { settingsModalProps, uploadModalProps } from '@/consts';
+import UploadModal from '@/components/UploadModal';
 
 export default {
   name: 'App',
@@ -148,6 +149,19 @@ export default {
       this.credentialsUpdated(values);
     });
     this.updateTags();
+    const uri = window.location.search.substring(1);
+    const params = new URLSearchParams(uri);
+    if (params.get('upload')) {
+      this.$modal.show(
+        UploadModal,
+        {
+          allAlbums: this.allAlbums,
+          allTags: this.allTags,
+          globalOptions: this.globalOptions,
+        },
+        uploadModalProps
+      );
+    }
   },
 
   methods: {
