@@ -45,6 +45,7 @@
 import UploadModal from '../UploadModal';
 import SettingsModal from '../SettingsModal';
 import { EventBus } from '../../eventBus';
+import { settingsModalProps } from '@/consts';
 
 export default {
   name: 'Buttons',
@@ -117,6 +118,8 @@ export default {
           maxWidth: 1000,
           maxHeight: 1000,
           name: 'modal-upload',
+          resizable: true,
+          clickToClose: true,
         }
       );
     },
@@ -127,13 +130,7 @@ export default {
           rokkaKey: this.globalOptions.rokkaKey,
           rokkaOrg: this.globalOptions.rokkaOrg,
         },
-        {
-          height: '300px',
-          width: '90%',
-          maxWidth: 1000,
-          maxHeight: 300,
-          name: 'modal-settings',
-        }
+        settingsModalProps
       );
     },
   },

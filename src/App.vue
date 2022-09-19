@@ -53,6 +53,7 @@ import SettingsModal from './components/SettingsModal';
 import config from '../config';
 import pathsToTree from 'paths-to-tree-structure';
 import { ROKKA_ORG, ROKKA_TOKEN } from '@/main';
+import { settingsModalProps } from '@/consts';
 
 export default {
   name: 'App',
@@ -241,13 +242,7 @@ export default {
           rokkaKey: this.rokkaKey,
           rokkaOrg: this.rokkaOrg,
         },
-        {
-          height: '270px',
-          width: '600px',
-          maxWidth: 1000,
-          maxHeight: 400,
-          name: 'modal-settings',
-        }
+        settingsModalProps
       );
     },
     updateTags() {

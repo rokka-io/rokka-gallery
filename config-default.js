@@ -62,6 +62,7 @@ export default {
     },
     'gallery-demo': {
       deleteEnabled: false,
+      favoriteHideEnabled: true,
       downloads: {
         maxwidth,
       },
@@ -69,6 +70,7 @@ export default {
     drupal20: {
       deleteEnabled: true,
     },
+
     playground: {
       deleteEnabled: true,
       downloads: {
