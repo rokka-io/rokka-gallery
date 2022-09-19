@@ -151,7 +151,7 @@ export default {
     this.updateTags();
     const uri = window.location.search.substring(1);
     const params = new URLSearchParams(uri);
-    if (params.get('upload')) {
+    if (params.has('upload')) {
       this.$modal.show(
         UploadModal,
         {
@@ -159,12 +159,26 @@ export default {
           allTags: this.allTags,
           globalOptions: this.globalOptions,
         },
-        uploadModalProps
+        uploadModalProps,
+        { closed: this.uploadClosed }
       );
     }
   },
 
   methods: {
+    uploadClosed() {
+      const uri = window.location.search.substring(1);
+      const params = new URLSearchParams(uri);
+      if (params.has('upload')) {
+        const query = { ...this.$route.query } || {};
+        delete query.upload;
+        this.$router.push({
+          path: this.$route.path || '/',
+          query: query,
+          hash: window.location.hash,
+        });
+      }
+    },
     credentialsUpdated({ token, org, key, logout }) {
       // eslint-disable-next-line
       console.log(`Credentials got updated`, token, org, key);

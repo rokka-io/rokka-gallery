@@ -155,10 +155,10 @@ export default {
   created() {
     const uri = window.location.search.substring(1);
     const params = new URLSearchParams(uri);
-    if (params.get('upload')) {
+    if (params.get('albums')) {
       this.albumsUpdate(
         params
-          .get('upload')
+          .get('albums')
           .split(',')
           .map((album) => ({
             text: album,
