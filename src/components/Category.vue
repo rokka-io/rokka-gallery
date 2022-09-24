@@ -142,6 +142,11 @@ export default {
           document.body.removeChild(anchor);
 
           URL.revokeObjectURL(imageURL);
+        })
+        .catch(() => {
+          this.$toast.error(
+            'Something went wrong creating the Zip. Maybe too many or too big pictures?'
+          );
         });
     },
     search(cursor = null) {
