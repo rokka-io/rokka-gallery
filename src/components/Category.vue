@@ -3,6 +3,20 @@
     <h2 class="mrgt0">
       {{ category }}
       ({{ ofTotal }})
+      <button
+        v-if="searchResults.length > 0"
+        class="button"
+        style="border: 0; background-color: #ffffff00"
+        title="Download max 100 images as Zip"
+        @click="download"
+      >
+        <Icon v-if="!downloading" id="download-circle" class="icon--150" />
+        <img
+          v-if="downloading"
+          class="icon icon--150"
+          :src="`${baseUrl}assets/loader.svg`"
+        />
+      </button>
     </h2>
     <ImagesList
       :images="searchResults"
@@ -54,6 +68,8 @@ export default {
       searchResults: [],
       searchCursorNext: null,
       searching: false,
+      downloading: false,
+      baseUrl: process.env.BASE_URL,
     };
   },
 
@@ -93,6 +109,41 @@ export default {
     this.search();
   },
   methods: {
+    async download() {
+      let search = { limit: 100 };
+      this.downloading = true;
+      if (this.category.length > 0) {
+        search = {
+          'user:array:albums': '"' + this.category + '"',
+          limit: 100,
+        };
+      }
+      this.$rokka(this.globalOptions.rokkaKey)
+        .sourceimages.downloadList(this.globalOptions.rokkaOrg, {
+          search: search,
+          sort: this.sort,
+        })
+        .then(async (result) => {
+          this.downloading = false;
+
+          const imageBlog = await result.response.blob();
+          const imageURL = URL.createObjectURL(imageBlog);
+
+          const anchor = document.createElement('a');
+          anchor.href = imageURL;
+          anchor.download =
+            this.globalOptions.rokkaOrg +
+            '_' +
+            this.category.replace('/', '_') +
+            '.zip';
+
+          document.body.appendChild(anchor);
+          anchor.click();
+          document.body.removeChild(anchor);
+
+          URL.revokeObjectURL(imageURL);
+        });
+    },
     search(cursor = null) {
       let search = { limit: 100 };
       this.searching = true;
@@ -130,3 +181,17 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+.button {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-weight: 500;
+  padding: $spacing-unit-tiny $spacing-unit-small;
+  border: 0;
+  &:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  }
+  cursor: pointer;
+}
+</style>
