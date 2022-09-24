@@ -1,7 +1,9 @@
 module.exports = {
   devServer: {
     port: 3000,
-    historyApiFallback: true,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
   },
   publicPath: process.env.FOR_ROKKA === 'true' ? '/gallery/' : '/',
   runtimeCompiler: false,

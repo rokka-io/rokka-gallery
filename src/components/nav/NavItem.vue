@@ -9,7 +9,7 @@
           @click="toggleOpen()"
         >
           <svg
-            v-if="category.children.length > 0"
+            v-if="category.children?.length > 0"
             :class="`icon--50 icon icon--caret-${open ? 'down' : 'right'}`"
           >
             <use
