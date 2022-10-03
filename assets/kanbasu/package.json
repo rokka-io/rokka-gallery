@@ -1,0 +1,66 @@
+{
+  "name": "kanbasu",
+  "version": "3.0.0",
+  "description": "A customizable CSS framework focused on layouting to easily scaffold responsive web interfaces.",
+  "homepage": "http://kanbasu.liip.ch",
+  "bin": {
+    "kanbasu": "scripts/scaffold.js"
+  },
+  "files": [
+    "scripts/**",
+    "src/**"
+  ],
+  "scripts": {
+    "build": "npm run build:css && fractal build",
+    "start": "run-p fractal:server watch:css",
+    "fractal:server": "fractal start",
+    "scss": "sass src/scss:public --load-path 'node_modules' --style compressed --no-source-map",
+    "autoprefixer": "postcss --no-map -u autoprefixer -r public/*.css",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "watch:css": "onchange 'src/scss/**/*.scss' -- npm run build:css",
+    "lint": "stylelint 'src/scss/**/*.scss'",
+    "test": "npm run scss && npm run lint",
+    "release": "release-it"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "framework",
+    "toolkit",
+    "bem",
+    "oocss"
+  ],
+  "author": "Liip AG",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liip/kanbasu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liip/kanbasu/issues"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "devDependencies": {
+    "@frctl/fractal": "^1.5.13",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "autoprefixer": "^10.4.7",
+    "conventional-changelog-cli": "^2.2.2",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^9.1.0",
+    "postcss-scss": "^4.0.4",
+    "release-it": "^15.0.0",
+    "sass": "^1.52.1",
+    "stylelint": "^14.8.5",
+    "stylelint-config-rawbot": "^1.0.0"
+  },
+  "peerDependencies": {
+    "sass": ">= 1.33"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "IE >= 11"
+  ]
+}

@@ -1,0 +1,13 @@
+/*----------------------------------------*\
+  CONTAINER
+\*----------------------------------------*/
+
+.#{$namespace}container,
+%container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-gutter-width;
+  padding-right: $container-gutter-width;
+}
