@@ -1,0 +1,147 @@
+/*----------------------------------------*\
+  SECTION
+\*----------------------------------------*/
+
+.section {
+  padding: $spacing-unit-large $spacing-unit-default;
+
+  position: relative;
+
+  background-color: $web-white;
+
+  @include media('md') {
+    padding: $spacing-unit-large;
+  }
+
+  @include media('lg') {
+    padding: $spacing-unit-huge;
+  }
+}
+
+  .section__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    overflow: hidden;
+
+    > * {
+      width: auto;
+      height: auto;
+      min-width: 100.1%;
+      min-height: 100.1%;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .section__body {
+    width: $container-max-width;
+    max-width: 100%;
+    margin: 0 auto;
+
+    position: relative;
+    z-index: 2;
+
+    .section--wide & {
+      width: $container-wide-max-width;
+    }
+  }
+
+  .section__continue {
+    position: absolute;
+    bottom: $spacing-unit-tiny;
+    left: 50%;
+    z-index: 2;
+
+    transform: translateX(-50%);
+
+    @include media('md') {
+      bottom: $spacing-unit-small;
+    }
+  }
+
+.section--behind-navbar {
+  padding-top: $navbar-height-xs + $spacing-unit-small;
+
+  @include media('sm') {
+    padding-top: $navbar-height-xs + $spacing-unit-default;
+  }
+  @include media('md') {
+    padding-top: $navbar-height-md + $spacing-unit-default;
+  }
+  @include media('lg') {
+    padding-top: $navbar-height-lg + $spacing-unit-default;
+  }
+}
+
+.section--tight {
+  padding: 0;
+
+  &.section--behind-navbar {
+    padding-top: $navbar-height-xs;
+
+    @include media('md') {
+      padding-top: $navbar-height-md;
+    }
+    @include media('lg') {
+      padding-top: $navbar-height-lg;
+    }
+  }
+}
+
+/**
+ * Alternative colors
+ */
+
+.section--light {
+  background-color: $white;
+}
+
+.section--negative {
+  color: $web-white;
+
+  @include headings() {
+    color: inherit;
+  }
+}
+
+
+/**
+ * Fixed sections
+ */
+
+.section--fixed {
+  width: 100%;
+  position: fixed;
+}
+
+  .section-spacer {
+    height: 100vh;
+  }
+
+
+/**
+ * Alternate layout
+ */
+
+.section--middle {
+  display: flex;
+  align-items: center;
+}
+
+.section--spaced {
+  min-height: 60vh;
+}
+
+.section--fit {
+  min-height: 100vh;
+}
+

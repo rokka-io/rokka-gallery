@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import Icon from './components/common/Icon';
 
-import '@liip/styleguide/dist/common.css';
+import '../assets/liip-styleguide/dist/common.css';
 import router from './router';
 import VModal from 'vue-js-modal';
 import rokka from 'rokka';

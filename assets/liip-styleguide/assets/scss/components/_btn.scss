@@ -1,0 +1,45 @@
+/*----------------------------------------*\
+  BUTTON
+  @extend Kanbasu
+\*----------------------------------------*/
+
+.btn {
+  font-weight: 500;
+  line-height: 1.5;
+
+  transition-property: background-color, border, color;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
+
+  &:hover,
+  &:focus {
+    color: $brand-color;
+  }
+}
+
+.btn--default,
+.btn--primary {
+  &:hover,
+  &:active {
+    color: $white;
+  }
+}
+
+.btn--default {
+  border-color: $warm-grey-200;
+
+  &:hover,
+  &:focus {
+    color: white;
+
+    border-color: $btn-default-hover-bkg-color;
+  }
+}
+
+.btn--primary {
+  border-color: $btn-primary-color;
+
+  &:focus {
+    color: white;
+  }
+}

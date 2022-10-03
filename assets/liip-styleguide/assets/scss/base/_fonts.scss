@@ -1,0 +1,34 @@
+/*----------------------------------------*\
+  FONTS
+\*----------------------------------------*/
+
+@font-face {
+  font-family: Archivo;
+  font-display: swap;
+  src: url('#{$styleguide-fonts-path}Archivo-Regular.woff2') format('woff2'),
+       url('#{$styleguide-fonts-path}Archivo-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Archivo;
+  font-weight: 500;
+  font-display: swap;
+  src: url('#{$styleguide-fonts-path}Archivo-SemiBold.woff2') format('woff2'),
+       url('#{$styleguide-fonts-path}Archivo-SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Archivo;
+  font-weight: 700;
+  font-display: swap;
+  src: url('#{$styleguide-fonts-path}Archivo-Bold.woff2') format('woff2'),
+       url('#{$styleguide-fonts-path}Archivo-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Archivo;
+  font-style: italic;
+  font-display: swap;
+  src: url('#{$styleguide-fonts-path}Archivo-Italic.woff2') format('woff2'),
+       url('#{$styleguide-fonts-path}Archivo-Italic.woff') format('woff');
+}

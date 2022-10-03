@@ -1,0 +1,17 @@
+/*----------------------------------------*\
+  ARTICLE
+\*----------------------------------------*/
+
+.article {
+  max-width: 810px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: rem(18px);
+
+  @include spaceless-children();
+
+  img {
+    @extend %img-responsive;
+  }
+}

@@ -1,0 +1,43 @@
+/*----------------------------------------*\
+  BRAND
+\*----------------------------------------*/
+
+.brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a.brand {
+  .brand__img {
+    transition: transform .2s cubic-bezier(.32,.63,.43,1.34);
+    will-change: transform;
+  }
+
+  &:hover,
+  &:focus {
+    .brand__img {
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+  .brand__img {
+    max-height: 80px;
+    // Fix calculation on IE
+    max-width: calc(100% - 1px);
+  }
+
+.brand--grayscale {
+  filter: grayscale(100%);
+  transition: filter .2s ease-out;
+}
+
+  a.brand--grayscale:hover,
+  a.brand--grayscale:focus {
+    filter: grayscale(0);
+  }

@@ -1,0 +1,24 @@
+/*----------------------------------------*\
+  EXPERTISES TILES
+\*----------------------------------------*/
+
+.expertises-tiles {
+  @extend %list;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1px;
+}
+
+  .expertise-tiles__item {
+    width: percentage(1/2);
+    flex: 0 1 auto;
+
+    border: 1px solid transparent;
+    background-color: $web-white;
+    background-clip: padding-box;
+
+    @include media('sm') {
+      width: percentage(1/3);
+    }
+  }

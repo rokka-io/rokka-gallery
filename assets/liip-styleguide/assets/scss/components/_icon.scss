@@ -1,0 +1,65 @@
+/*----------------------------------------*\
+  ICON
+\*----------------------------------------*/
+
+@mixin icon-size($size) {
+  width: $size;
+  height: $size;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+
+  position: relative;
+  top: -1px;
+
+  fill: currentColor;
+}
+
+  .icon--50 {
+    @include icon-size(12px);
+  }
+
+  .icon--75 {
+    @include icon-size(18px);
+  }
+
+  .icon--100 {
+    @include icon-size(24px);
+  }
+
+  .icon--150 {
+    @include icon-size(32px);
+  }
+
+  .icon--200 {
+    @include icon-size(48px);
+  }
+
+  .icon--300 {
+    @include icon-size(72px);
+  }
+
+
+@include foreach-breakpoint() {
+  .#{$breakpoint-name}-icon--75 {
+    @include icon-size(18px);
+  }
+
+  .#{$breakpoint-name}-icon--100 {
+    @include icon-size(24px);
+  }
+
+  .#{$breakpoint-name}-icon--150 {
+    @include icon-size(32px);
+  }
+
+  .#{$breakpoint-name}-icon--200 {
+    @include icon-size(48px);
+  }
+
+  .#{$breakpoint-name}-icon--300 {
+    @include icon-size(72px);
+  }
+}

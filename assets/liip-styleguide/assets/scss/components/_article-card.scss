@@ -1,0 +1,45 @@
+/*----------------------------------------*\
+  ARTICLE CARD
+\*----------------------------------------*/
+
+.article-card {}
+
+  .article-card__link {
+    display: block;
+
+    color: $text-color;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+
+      .article-card__title {
+        color: $green-700;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .article-card__title {
+    margin-top: $spacing-unit-default;
+    transition: color .2s ease-out;
+  }
+
+  .article-card__excerpt {
+    margin-top: 0;
+
+    color: $muted-color;
+  }
+
+.article-card--hero {
+  .article-card__title {
+    margin-top: 0;
+  }
+
+  .article-card__excerpt {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,210 @@
+/*----------------------------------------*\
+  TYPOGRAPHY
+\*----------------------------------------*/
+
+/**
+ * Headings
+ */
+
+@include headings() {
+  color: $web-black;
+  font-weight: 700;
+  line-height: 1.2;
+
+  transition: color .2s ease-out;
+
+  a {
+    color: inherit;
+    transition: inherit;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: $green-700;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+h1,
+.h1 {
+  font-size: rem(32px);
+}
+
+h2,
+.h2 {
+  font-size: rem(28px);
+}
+
+h3,
+.h3 {
+  font-size: rem(24px);
+}
+
+h4,
+.h4 {
+  font-size: rem(20px);
+}
+
+h5,
+.h5 {
+  font-size: rem(18px);
+  font-weight: 500;
+}
+
+h6,
+.h6 {
+  font-size: rem(16px);
+  font-weight: 500;
+}
+
+@include media('sm') {
+  h1,
+  .h1 {
+    font-size: rem(36px);
+  }
+
+  h2,
+  .h2 {
+    font-size: rem(32px);
+  }
+}
+
+@include media('lg') {
+  h1,
+  .h1 {
+    font-size: rem(52px);
+  }
+
+  h2,
+  .h2 {
+    font-size: rem(42px);
+  }
+}
+
+
+/**
+ * Paragraphs
+ */
+
+p {
+  margin-top: $spacing-unit-default;
+  margin-bottom: $spacing-unit-default;
+}
+
+
+/**
+ * Links
+ */
+
+a {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+
+    @include headings {
+      text-decoration: none;
+      color: $green-700;
+    }
+  }
+}
+
+.link-text {
+  color: $web-black;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $brand-color;
+    transition: color .2s;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+/**
+ * Various defaults
+ */
+
+pre,
+code {
+  color: $web-white;
+  font-size: rem(14px);
+
+  border-radius: 0;
+  background-color: $web-black;
+
+  tab-size: 2;
+
+  &::selection,
+  ::selection {
+    background-color: rgba(255,255,255,.18);
+    color: inherit;
+  }
+
+  &::-moz-selection,
+  ::-moz-selection {
+    background-color: rgba(255,255,255,.18);
+    color: inherit;
+  }
+}
+
+pre {
+  padding: $spacing-unit-small;
+  margin-top: $spacing-unit-default;
+  margin-bottom: $spacing-unit-default;
+}
+
+code {
+  display: inline;
+
+  box-shadow: 0 -1px 0 0 $web-black, 0 2px 0 0 $web-black;
+}
+
+address {
+  font-style: normal;
+}
+
+blockquote {
+  margin: 0;
+
+  @include spaceless-children();
+}
+
+cite {
+  font-style: normal;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+hr {
+  margin: $spacing-unit-default 0;
+
+  border: 0;
+  border-bottom: 1px solid $warm-grey-200;
+}
+
+
+/**
+ * Selection
+ */
+
+::selection {
+  background-color: $green-700;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: $green-700;
+  color: white;
+}

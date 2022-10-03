@@ -1,0 +1,100 @@
+/*----------------------------------------*\
+  LIIP STYLEGUIDE SETTINGS
+\*----------------------------------------*/
+
+/**
+ * Assets paths
+ */
+
+$styleguide-assets-path:            '../' !default;
+$styleguide-images-path:            $styleguide-assets-path + 'images/' !default;
+$styleguide-fonts-path:             $styleguide-assets-path + 'fonts/' !default;
+
+
+/**
+ * Layout
+ */
+
+$navbar-height-xs:      60px;
+$navbar-height-md:      160px;
+$navbar-height-lg:      240px;
+$navbar-collapse-max:   840px !default;
+$navbar-collapse-min:   $navbar-collapse-max + 1px !default;
+
+
+/**
+ * Colors
+ */
+
+$web-black:       #414141;
+$black:           #000000;
+$web-white:       #F7F7F5;
+$white:           #FFFFFF;
+
+$green-100:       #D0DD2C;
+$green-200:       #C1D430;
+$green-300:       #B3CC35;
+$green-400:       #A4C339;
+$green-500:       #92B93D;
+$green-600:       #80B040;
+$green-700:       #6EA644;
+
+$warm-grey-50:    #F7F7F5;
+$warm-grey-100:   #EBEBE6;
+$warm-grey-200:   #DDDDD8;
+$warm-grey-300:   #CECFCA;
+$warm-grey-400:   #C0C1BC;
+$warm-grey-500:   #A5A59F;
+$warm-grey-600:   #898A81;
+$warm-grey-700:   #6E6E64;
+$warm-grey-800:   #5F5F58;
+$warm-grey-900:   #50504D;
+$warm-grey-1000:  #414141;
+
+$orange-100:      #F8C026;
+$orange-200:      #F5B61F;
+$orange-300:      #F2AB17;
+$orange-400:      #EFA00F;
+$orange-500:      #EC9506;
+$orange-600:      #E98A00;
+$orange-700:      #E58000;
+
+$teal-100:        #19B3A6;
+$teal-200:        #13A99C;
+$teal-300:        #0E9F93;
+$teal-400:        #089589;
+$teal-500:        #05837C;
+$teal-600:        #03736C;
+$teal-700:        #00615D;
+
+$cranberry-100:   #F26380;
+$cranberry-200:   #E85876;
+$cranberry-300:   #DD4E6B;
+$cranberry-400:   #D34361;
+$cranberry-500:   #C23E59;
+$cranberry-600:   #B23852;
+$cranberry-700:   #A1334A;
+
+$blue-100:        #6da4ff;
+$blue-200:        #448aff;
+$blue-300:        #3380ff;
+$blue-400:        #2979ff;
+$blue-500:        #206ae5;
+$blue-600:        #195ccd;
+$blue-700:        #0d4bb1;
+
+$red-100:         #ff8a65;
+$red-200:         #ff6e40;
+$red-300:         #fa5521;
+$red-400:         #f5460f;
+$red-500:         #ea3800;
+$red-600:         #d33301;
+$red-700:         #c02e00;
+
+$purple-100:      #9565ff;
+$purple-200:      #824aff;
+$purple-300:      #7334ff;
+$purple-400:      #6722ff;
+$purple-500:      #5314dd;
+$purple-600:      #470dc7;
+$purple-700:      #3a09a7;

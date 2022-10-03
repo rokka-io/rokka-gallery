@@ -1,0 +1,46 @@
+/*----------------------------------------*\
+  MIXINS
+\*----------------------------------------*/
+
+/**
+ * Remove margin to the first and last elements
+ */
+@mixin spaceless-children() {
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Break words that are too long to fit in the container
+ * https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+ */
+@mixin wrap-words() {
+  word-wrap: break-word;
+  // This is the dangerous one in WebKit, as it breaks things wherever
+  word-break: break-all;
+  // Instead use this non-standard one:
+  word-break: break-word;
+  // These are technically the same, but use both
+  overflow-wrap: break-word;
+  -ms-word-break: break-all;
+  // Adds a hyphen where the word breaks, if supported (No Blink)
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+
+/**
+ * Shortcut to apply style to all headings
+ */
+@mixin headings() {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    @content;
+  }
+}

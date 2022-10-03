@@ -1,0 +1,27 @@
+/*----------------------------------------*\
+  TAG
+\*----------------------------------------*/
+
+.tag {
+  display: inline-block;
+  padding: 6px $spacing-unit-small;
+
+  position: relative;
+
+  color: $text-color;
+  font-weight: 500;
+
+  background-color: $warm-grey-100;
+  transition-property: color, background-color;
+  transition-duration: .25s;
+}
+
+a.tag {
+  &:hover,
+  &:focus {
+    color: white;
+    text-decoration: none;
+
+    background-color: $brand-color;
+  }
+}

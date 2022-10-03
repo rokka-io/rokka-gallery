@@ -1,0 +1,19 @@
+/*----------------------------------------*\
+  BREADCRUMB
+\*----------------------------------------*/
+
+.breadcrumb {
+  @extend %list;
+  display: flex;
+  flex-wrap: wrap;
+
+  font-weight: 500;
+}
+
+  .breadcrumb__item {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-right: $spacing-unit-tiny;
+
+    line-height: 1.3;
+  }

@@ -11,12 +11,12 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `
-          @import "~@liip/styleguide/assets/scss/settings/settings";
-          @import "~@liip/styleguide/assets/scss/settings/kanbasu";
+          @import "assets/liip-styleguide/assets/scss/settings/settings";
+          @import "assets/liip-styleguide/assets/scss/settings/kanbasu";
           @import '~kanbasu/src/scss/tools/functions';
-          @import "~@liip/styleguide/assets/scss/tools/functions";
+          @import "assets/liip-styleguide/assets/scss/tools/functions";
           @import '~kanbasu/src/scss/tools/mixins';
-          @import "~@liip/styleguide/assets/scss/tools/mixins";
+          @import "assets/liip-styleguide/assets/scss/tools/mixins";
         `,
       },
     },

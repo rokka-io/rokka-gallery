@@ -1,0 +1,86 @@
+/*----------------------------------------*\
+  EXPERTISE TAG
+\*----------------------------------------*/
+
+.expertise-tag {
+  display: inline-block;
+  padding: 6px 0;
+
+  position: relative;
+
+  color: $brand-color;
+  font-weight: 500;
+
+  transition-property: padding, color;
+  transition-duration: .3s;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-image: linear-gradient(to right, $green-700 50%, $green-400);
+    transition: opacity .3s;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus {
+    padding-left: $spacing-unit-small;
+    padding-right: $spacing-unit-small;
+
+    color: white;
+    text-decoration: none;
+
+    &::before {
+      opacity: 1;
+    }
+
+    .icon {
+      color: inherit;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @supports (-webkit-background-clip: text) {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, $green-700 50%, $green-400);
+    -webkit-background-clip: text;
+
+    .icon {
+      color: $green-400;
+    }
+
+    &::before {
+      content: null;
+    }
+
+    &:hover,
+    &:focus {
+      -webkit-text-fill-color: initial
+    }
+  }
+}
+
+.expertise-icon {
+  width: 12px;
+  height: 10px;
+  margin-left: 5px;
+
+  top: 0;
+
+  vertical-align: baseline;
+}
