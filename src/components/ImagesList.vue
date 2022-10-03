@@ -87,7 +87,9 @@ export default {
     if (window.location.hash) {
       window.setTimeout(() => {
         const hash = window.location.hash.substring(1);
-        const i = this.images.findIndex((image) => image.short_hash === hash);
+        const i = this.imagesLocal.findIndex(
+          (image) => image.short_hash === hash
+        );
         if (i >= 0) {
           this.showModalImage(i);
         }
@@ -96,12 +98,13 @@ export default {
 
     return {
       galleryIndex: null,
+      imagesLocal: this.images,
       modalIndex: null,
     };
   },
   computed: {
     galleryImages() {
-      return map(this.images, (image) => {
+      return map(this.imagesLocal, (image) => {
         let format = null;
         if (image['mimetype'] === 'video/mp4') {
           format = 'mp4';
@@ -139,23 +142,23 @@ export default {
     EventBus.$on('image-added', (hash, image) => {
       let imageInList = false;
 
-      forEach(this.images, function (value) {
+      forEach(this.imagesLocal, function (value) {
         if (value.hash === hash) {
           imageInList = true;
         }
       });
       if (imageInList === false) {
-        this.images.unshift(image);
+        this.imagesLocal.unshift(image);
       }
     });
   },
   methods: {
     showModalImage(index) {
       let showIndex = index;
-      if (index >= this.images.length) {
+      if (index >= this.imagesLocal.length) {
         showIndex = 0;
       } else if (index < 0) {
-        showIndex = this.images.length - 1;
+        showIndex = this.imagesLocal.length - 1;
       }
       this.modalIndex = showIndex;
 

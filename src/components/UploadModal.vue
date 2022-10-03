@@ -13,7 +13,7 @@
           @uploading="uploadingEvent"
           @uploaded="uploadedEvent"
         >
-          <template v-slot:buttons>
+          <template #buttons>
             <span />
           </template>
           <span></span>

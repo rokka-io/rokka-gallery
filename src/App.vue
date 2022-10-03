@@ -19,11 +19,11 @@
       />
 
       <section class="section">
-        <template v-if="!this.$route.params.category">
+        <template v-if="!$route.params.category">
           <router-view
             :all-albums="allAlbumsFlat"
             :all-tags="allTags"
-            :query="this.$route.params.search"
+            :query="$route.params.search"
             :reload="reload"
             :global-options="globalOptions"
             :sort="sort"
@@ -31,7 +31,7 @@
         </template>
         <template v-else>
           <router-view
-            :category="this.$route.params.category"
+            :category="$route.params.category"
             :all-albums="allAlbumsFlat"
             :all-tags="allTags"
             :global-options="globalOptions"
