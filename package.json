@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@johmun/vue-tags-input": "2.1.0",
-    "core-js": "3.25.1",
+    "core-js": "3.25.5",
     "dayjs": "1.11.5",
     "lodash-es": "4.17.21",
     "paths-to-tree-structure": "1.0.7",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
-    "@typescript-eslint/eslint-plugin": "5.7.0",
+    "@typescript-eslint/eslint-plugin": "5.39.0",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
