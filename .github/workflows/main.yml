@@ -22,5 +22,6 @@ jobs:
 
       - name: npm install and build
         run: |
+           cp config-default.js config.js
            npm install
            npm run build
