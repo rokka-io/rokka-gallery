@@ -21,5 +21,4 @@ yarn-error.log*
 *.sw*
 /config.js
 /yarn.lock
-/package-lock.json
 /config-liip-pictures.js
