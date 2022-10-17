@@ -75,6 +75,8 @@ export default {
       { text: 'Taken asc', value: 'static:date:exif:taken asc' },
       { text: 'Taken or Uploaded desc', value: 'taken_or_created desc' },
       { text: 'Taken or Uploaded asc', value: 'taken_or_created asc' },
+      { text: 'Name asc', value: 'name asc' },
+      { text: 'Name desc', value: 'name desc' },
     ];
 
     return {
