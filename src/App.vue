@@ -382,7 +382,7 @@ export default {
 <style lang="scss">
 .page {
   display: grid;
-  grid-template-columns: minmax(0, 220px) auto;
+  grid-template-columns: minmax(0, 270px) auto;
 
   position: relative;
   &.nonav {
@@ -399,6 +399,14 @@ export default {
   overflow-y: auto;
 
   background-color: white;
+
+  .media__body {
+    .link {
+      line-height: 18px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
 }
 
 .alert {
