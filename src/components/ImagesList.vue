@@ -132,6 +132,12 @@ export default {
       });
     },
   },
+  watch: {
+    images(newImages) {
+      this.imagesLocal = newImages;
+    },
+  },
+
   created() {
     //those events are a little bit ugly...
     EventBus.$on('show-gallery', () => {
