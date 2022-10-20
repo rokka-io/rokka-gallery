@@ -32,7 +32,7 @@ liipops-static-site:
   stage: build
   extends: [.liipops-static-site,.node_job]
   script:
-    - cp config-liip-pictures.js config.js
+    - sed -e "s/\${LIIP_PICTURES_ROKKA_KEY}/${LIIP_PICTURES_ROKKA_KEY}/g" config-liip-pictures.js > config.js
     - npm run build
   after_script:
     - mv public public.repo
