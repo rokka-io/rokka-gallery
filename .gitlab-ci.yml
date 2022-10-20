@@ -9,6 +9,7 @@ variables:
   LIIPOPS_CLUSTER_ISSUER: letsencrypt-prod
   LIIPOPS_OAUTH: ""
   LIIPOPS_BASIC_AUTH_PAIR: "pics:${CI_PIPELINE_ID}-pwd" # This is overriden in Gitlab CI variables
+  LIIPOPS_ROUTE_UNKNOWN_TO: index.html
 
 .node_job:
   image: node:16-alpine
