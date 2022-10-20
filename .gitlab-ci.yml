@@ -1,0 +1,39 @@
+---
+include:
+  - project: 'liipops/static-hoster'
+    file: '/static-hosting.yml'
+    ref: main
+
+variables:
+  LIIPOPS_HOSTS: pictures.liip.ch
+  LIIPOPS_CLUSTER_ISSUER: letsencrypt-prod
+  LIIPOPS_OAUTH: ""
+  LIIPOPS_BASIC_AUTH_PAIR: "pics:${CI_PIPELINE_ID}-pwd" # This is overriden in Gitlab CI variables
+
+.node_job:
+  image: node:16-alpine
+  tags:
+    - docker
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+  variables:
+    NPM_CONFIG_CACHE: '.npm'
+    NPM_CONFIG_PREFER_OFFLINE: 'true'
+  before_script:
+    - node --version
+    - npm --version
+    - npm ci
+
+liipops-static-site:
+  stage: build
+  extends: [.liipops-static-site,.node_job]
+  script:
+    - sed -e "s/\${LIIP_PICTURES_ROKKA_KEY}/${LIIP_PICTURES_ROKKA_KEY}/g" config-liip-pictures.js > config.js
+    - npm run build
+  after_script:
+    - mv public public.repo
+    - mv dist public

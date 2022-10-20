@@ -3,13 +3,6 @@
 set -e
 
 
-if [[ -f config-liip-pictures.js ]]; then
-  cp config-liip-pictures.js config.js
-  npm run build
-  rsync -avr -e "ssh -p 2202" dist/ liip@ps8.ms.bsa.oriented.ch:/var/www/html/pictures.liip.ch
-
-fi
-
 cp config-default.js config.js
 
 FOR_ROKKA=true npm run build
