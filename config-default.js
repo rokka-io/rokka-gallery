@@ -116,6 +116,9 @@ export default {
       deleteEnabled: true,
       favoriteHideEnabled: true,
     },
+    'oomnium-dev': {
+      deleteEnabled: true,
+    },
     'liip-pictures': {
       deleteEnabled: true,
       favoriteHideEnabled: true,
