@@ -7,7 +7,7 @@
         v-if="searchResults.length > 0"
         class="button"
         style="border: 0; background-color: #ffffff00"
-        title="Download max 100 images as Zip"
+        title="Download max 200 images as Zip"
         @click="download"
       >
         <Icon v-if="!downloading" id="download-circle" class="icon--150" />
@@ -115,7 +115,7 @@ export default {
       if (this.category.length > 0) {
         search = {
           'user:array:albums': '"' + this.category + '"',
-          limit: 100,
+          limit: 200,
         };
       }
       this.$rokka(this.globalOptions.rokkaKey)
