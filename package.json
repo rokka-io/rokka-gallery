@@ -13,7 +13,7 @@
     "dayjs": "1.11.5",
     "lodash-es": "4.17.21",
     "paths-to-tree-structure": "1.0.7",
-    "rokka": "^3.10.0",
+    "rokka": "^3.14.0",
     "vue": "2.7.10",
     "vue-clipboard2": "0.3.3",
     "vue-gallery": "2.0.1",
