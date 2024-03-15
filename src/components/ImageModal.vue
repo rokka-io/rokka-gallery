@@ -84,7 +84,11 @@
                 @image-do-reload="loadImageDataFromRokka"
               />
             </CollapsibleSection>
-
+            <CollapsibleSection
+              title="Auto Descriptions"
+              key-name="autodescriptions"
+              :data="autoDescriptions"
+            />
             <CollapsibleSection
               title="Location"
               key-name="location"
@@ -98,6 +102,7 @@
               key-name="other"
               :data="otherMetadata"
             />
+
             <CollapsibleSection
               title="Video"
               key-name="video"
@@ -110,7 +115,7 @@
               :data="dynamicMetadata"
             />
             <CollapsibleSection
-              title="Autolabels"
+              title="Auto Labels"
               key-name="autolables"
               :data="autolabels.length > 0"
             >
@@ -126,6 +131,7 @@
               key-name="otherstatic"
               :data="otherStatic"
             />
+
             <CollapsibleSection
               v-if="globalOptions.deleteEnabled && globalOptions.canWrite"
               title="Delete image"
@@ -294,7 +300,8 @@ export default {
             b !== 'exif' &&
             b !== 'location' &&
             b !== 'video' &&
-            b !== 'autolabels'
+            b !== 'autolabels' &&
+            b !== 'auto_description'
           ) {
             metadata.push({ key: b, value: a });
           }
@@ -308,6 +315,30 @@ export default {
       }
       return metadata;
     },
+    autoDescriptions() {
+      const metadata = [];
+
+      if (
+        this.localImage.static_metadata &&
+        this.localImage.static_metadata.auto_description &&
+        this.localImage.static_metadata.auto_description.descriptions
+      ) {
+        forEach(
+          this.localImage.static_metadata.auto_description.descriptions,
+          (a, b) => {
+            metadata.push({ key: b, value: a });
+          }
+        );
+        metadata.sort((a, b) => {
+          if (a.key > b.key) {
+            return 1;
+          }
+          return -1;
+        });
+      }
+      return metadata;
+    },
+
     dynamicMetadata() {
       const metadata = [];
 

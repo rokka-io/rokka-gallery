@@ -108,6 +108,7 @@ export default {
         'user:text:title',
         'static:text:exif:description',
         'static:text:exif:title',
+        'static:array_text:auto_description:descriptions',
       ];
       const searchFieldsLowerCased = [
         'user:array:labels',
@@ -116,6 +117,7 @@ export default {
         'static:str:location:state',
         'static:str:location:city',
         'static:array:autolabels:labels',
+        'static:array_text:auto_description:descriptions',
       ];
       if (this.query.length > 0) {
         if (this.query.includes('=')) {
