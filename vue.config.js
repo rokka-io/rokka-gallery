@@ -18,6 +18,14 @@ module.exports = {
           @import 'assets/kanbasu/src/scss/tools/mixins';
           @import "assets/liip-styleguide/assets/scss/tools/mixins";
         `,
+        sassOptions: {
+          silenceDeprecations: [
+            'legacy-js-api',
+            'import',
+            'global-builtin',
+            'color-functions',
+          ],
+        },
       },
     },
   },
