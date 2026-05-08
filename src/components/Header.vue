@@ -76,12 +76,16 @@ export default {
   top: 0;
   z-index: 1;
 
-  background-color: #6ea644;
-  background-image: linear-gradient(13deg, #80af40 0%, #6ea644 58%);
+  background-color: var(--header-bg);
+  background-image: linear-gradient(
+    13deg,
+    var(--header-bg-gradient-from) 0%,
+    var(--header-bg-gradient-to) 58%
+  );
 }
 
 .title {
-  color: white;
+  color: var(--header-fg);
   font-size: rem(26px);
   line-height: 1;
 

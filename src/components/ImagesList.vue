@@ -238,7 +238,7 @@ footer {
 footer button {
   background-color: transparent;
   border: 0;
-  color: #6ea644;
+  color: var(--brand-color);
   cursor: pointer;
 }
 </style>

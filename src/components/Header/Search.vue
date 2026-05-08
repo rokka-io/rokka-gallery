@@ -171,7 +171,7 @@ export default {
     max-width: none !important;
 
     .ti-selected-item {
-      background-color: $green-700 !important;
+      background-color: var(--brand-color) !important;
       color: white;
     }
     .ti-autocomplete {

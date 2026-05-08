@@ -95,7 +95,7 @@ export default {
   }
 
   &.router-link-active {
-    color: $green-700;
+    color: var(--brand-color);
     font-weight: bold;
 
     background-color: transparentize($green-400, 0.9);

@@ -121,7 +121,17 @@ export default {
     },
     'liip-pictures': {
       deleteEnabled: true,
-      favoriteHideEnabled: true,
+
+      theme: {
+        '--header-bg': '#222222',
+        '--header-bg-gradient-from': '#222222',
+        '--header-bg-gradient-to': '#0E322D',
+        '--brand-color': '#045F50',
+        '--brand-color-hover': '#6EE09C',
+        '--brand-color-active': '#0E322D',
+        '--header-fg': '#ffffff',
+      },
+
       downloads: {
         original: {
           title: 'Download original',

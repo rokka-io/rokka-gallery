@@ -1,12 +1,5 @@
 import rokkaHelper from './src/rokkaHelper';
 
-const glitchit = {
-  title: 'Glitch it',
-  url: function (icon, rokkaOrg) {
-    return `https://glitch.liip.to/?hash=${icon.short_hash}&org=${rokkaOrg}`;
-  },
-};
-
 const maxwidth = {
   title: function (icon) {
     if (icon.width > 1920) {
@@ -39,6 +32,16 @@ export default {
   orgOptions: {
     'liip-pictures': {
       deleteEnabled: true,
+
+      theme: {
+        '--header-bg': '#222222',
+        '--header-bg-gradient-from': '#222222',
+        '--header-bg-gradient-to': '#0E322D',
+        '--brand-color': '#045F50',
+        '--brand-color-hover': '#6EE09C',
+        '--brand-color-active': '#0E322D',
+        '--header-fg': '#ffffff',
+      },
 
       downloads: {
         original: {

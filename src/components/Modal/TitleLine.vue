@@ -38,17 +38,21 @@ header {
   height: $modal-header-height;
   overflow: hidden;
   padding: 3px 5px 3px 20px;
-  background-color: #6ea644;
-  background-image: linear-gradient(13deg, #80af40 0%, #6ea644 58%);
+  background-color: var(--header-bg);
+  background-image: linear-gradient(
+    13deg,
+    var(--header-bg-gradient-from) 0%,
+    var(--header-bg-gradient-to) 58%
+  );
 
   font-weight: bold;
-  color: white;
+  color: var(--header-fg);
 }
 .closeButton {
   background-color: transparent;
   border: 0;
   font-weight: 500;
-  color: white;
+  color: var(--header-fg);
   font-size: 20px;
   cursor: pointer;
 }

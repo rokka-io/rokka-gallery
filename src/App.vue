@@ -122,6 +122,7 @@ export default {
         downloads: orgOptions.downloads || null,
         deleteEnabled: orgOptions.deleteEnabled || false,
         favoriteHideEnabled: orgOptions.favoriteHideEnabled || false,
+        theme: orgOptions.theme || null,
         canWrite: this.canWrite,
         canUpload: this.canUpload,
         rokkaToken: this.rokkaToken,
@@ -130,7 +131,14 @@ export default {
     },
   },
 
+  watch: {
+    rokkaOrg() {
+      this.applyTheme();
+    },
+  },
+
   async created() {
+    this.applyTheme();
     this.checkLogin();
 
     this.debouncedUpdate = debounce(this.updateTags, 10000);
@@ -166,6 +174,30 @@ export default {
   },
 
   methods: {
+    applyTheme() {
+      const orgOptions =
+        config.orgOptions && config.orgOptions[this.rokkaOrg]
+          ? config.orgOptions[this.rokkaOrg]
+          : {};
+      const theme = orgOptions.theme || {};
+      const root = document.documentElement;
+      const tokens = [
+        '--header-bg',
+        '--header-bg-gradient-from',
+        '--header-bg-gradient-to',
+        '--brand-color',
+        '--brand-color-hover',
+        '--brand-color-active',
+        '--header-fg',
+      ];
+      tokens.forEach((t) => {
+        if (theme[t]) {
+          root.style.setProperty(t, theme[t]);
+        } else {
+          root.style.removeProperty(t);
+        }
+      });
+    },
     uploadClosed() {
       const uri = window.location.search.substring(1);
       const params = new URLSearchParams(uri);

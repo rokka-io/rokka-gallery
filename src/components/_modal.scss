@@ -116,12 +116,12 @@
     padding: 4px 8px;
 
     &:hover {
-      color: #6EA644;
+      color: var(--brand-color-hover);
       background-color: white;
     }
 
     &.open {
-      color: #6EA644;
+      color: var(--brand-color);
       background-color: white;
   
       + div {
@@ -139,11 +139,11 @@
 
   :deep(.button) {
     position: relative;
-    background-color: $green-700; //rgba(255, 255, 255, 0.15);
+    background-color: var(--brand-color); //rgba(255, 255, 255, 0.15);
     color: white;
     font-weight: 500;
     padding: $spacing-unit-tiny $spacing-unit-small;
-    border: 1px  $green-700 solid;
+    border: 1px  var(--brand-color) solid;
     cursor: pointer;
     margin-right: 10px;
 
@@ -155,7 +155,7 @@
   :deep(.button.cancel) {
     background-color: white; //rgba(255, 255, 255, 0.15);
     color: black;
-    border: 1px  $green-700 solid;
+    border: 1px  var(--brand-color) solid;
   }
 
   :deep(.button.warning) {
@@ -174,7 +174,7 @@
     max-width: none !important;
 
     .ti-selected-item {
-      background-color: $green-700 !important;
+      background-color: var(--brand-color) !important;
       color: white;
     }
     .ti-autocomplete {
@@ -182,7 +182,7 @@
       max-height: calc(100vh - 80px);
     }
     .ti-tag {
-      background-color: $green-700;
+      background-color: var(--brand-color);
     }
     .ti-deletion-mark {
       background-color: darkred;

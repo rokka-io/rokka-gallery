@@ -169,7 +169,7 @@ export default {
   background-color: white;
   color: black;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-  border: 1px $green-700 solid;
+  border: 1px var(--brand-color) solid;
   li:first-child {
     margin-top: 0;
   }
@@ -180,10 +180,10 @@ export default {
     &:hover {
       cursor: pointer;
       color: white;
-      background-color: $green-700;
+      background-color: var(--brand-color-hover);
     }
     &.selected {
-      background-color: $green-700;
+      background-color: var(--brand-color);
       color: white;
     }
   }
