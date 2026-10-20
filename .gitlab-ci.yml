@@ -7,8 +7,7 @@ include:
 variables:
   LIIPOPS_HOSTS: pictures.liip.ch
   LIIPOPS_CLUSTER_ISSUER: letsencrypt-prod
-  LIIPOPS_OAUTH: ""
-  LIIPOPS_BASIC_AUTH_PAIR: "pics:${CI_PIPELINE_ID}-pwd" # This is overriden in Gitlab CI variables
+  LIIPOPS_OAUTH: "true" # Liip SSO login; the rokka key is in the JS bundle, so the site must not be public
   LIIPOPS_ROUTE_UNKNOWN_TO: index.html
 
 .node_job:

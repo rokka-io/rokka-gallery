@@ -38,17 +38,20 @@ Node 18+ required (see `.nvmrc`). No test suite exists in this project.
 **State management**: No Vuex. State lives in `App.vue` data (albums, tags, auth) and is passed down as props. Component-to-component communication uses an EventBus (`src/eventBus.js`). Auth tokens and org are persisted in localStorage.
 
 **Routing** (`src/router.js`):
+
 - `/` — Home/image list
 - `/_/:search` — Search results
 - `/:category+` — Category/album view (supports nested paths)
 
 **Key source files**:
+
 - `src/App.vue` — Root component, auth management, album/tag fetching
 - `src/rokkaHelper.js` — Image render URL generation, format detection utilities
 - `src/consts.js` — Modal dimension/behavior constants
 - `config.js` — Runtime config: org name, API key, per-org feature flags (delete, download, favorites)
 
 **Components structure**:
+
 - `src/views/` — Page-level route components (ImagesList, Category)
 - `src/components/` — Reusable components (Header, Nav, ImageModal, UploadModal, SettingsModal, ImageBlock)
 - `src/components/common/` — Generic UI (Icon, Loader)
@@ -60,6 +63,7 @@ SCSS with Liip styleguide (`assets/liip-styleguide/` git submodule). `vue.config
 ## Configuration
 
 `config.js` (copied from `config.js.dist`) defines per-organization settings:
+
 - `rokkaOrg` / `rokkaKey` — Default org and optional read-only API key
 - `orgOptions[orgName]` — Feature flags per org: `canDelete`, `downloads` (array of render stack configs), `favorites`, `hideImages`
 

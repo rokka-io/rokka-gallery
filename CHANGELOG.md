@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Added
+
+- Add per-org theming via an optional `theme` block in `orgOptions`; liip-pictures gets a dark header with the new Liip green palette
+
 ## 2026-02-22
 
 ### Changed
